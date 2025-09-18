@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: f41770b176ab86648be6561dd4ab84b9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Noto Sans Georgian Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 13ab70e15bef4da45bcd221117b0ec1a, type: 3}
+  - {fileID: 12800000, guid: e2c9480541e946044ae41f1349d9688b, type: 3}
+  - {fileID: 12800000, guid: 74f8bb9afe4b6f844b6ca155ab6efbe7, type: 3}
+  - {fileID: 12800000, guid: e1112807ffc706842bee4a6e1064564d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

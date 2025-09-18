@@ -1,0 +1,23 @@
+{
+    "name": "PopupTesterModule",
+    "rootNamespace": "",
+    "references": [
+        "UniTask",
+        "VContainer",
+        "R3.Unity",
+        "Core",
+        "Unity.TextMeshPro",
+        "DOTween.Modules",
+        "UniTask.DOTween",
+        "Services"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

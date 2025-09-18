@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Modules/Base/Bootstrap/Scenes/Bootstrap.unity
+    guid: 2ccec45666a9743428ff3206922df110
+  - enabled: 1
+    path: Assets/Modules/Base/MainMenu/Scenes/MainMenu.unity
+    guid: 6c1b24bd33fa328499eebad74527aa27
+  - enabled: 1
+    path: Assets/Modules/Base/Converter/Scenes/Converter.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Modules/Base/TicTac/Scenes/TicTac.unity
+    guid: da7fbbe19be543541b43cc4121ba7dbd
+  - enabled: 1
+    path: Assets/Modules/Additional/DynamicBackground/Scene/DynamicBackground.unity
+    guid: d502e3d7e375cac4dabf03194eddeed6
+  - enabled: 1
+    path: Assets/Modules/Additional/PopupsManager/Scenes/PopupsManager.unity
+    guid: 0fd8d7b6ee230064aa06ea08bcb21331
+  - enabled: 1
+    path: Assets/Modules/Additional/SplashScreen/Scene/SplashScreen.unity
+    guid: b17be873bd53f264ebed7bef2029cf59
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: b350deea38b5f984c8a6f1db80e26621, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 431024dc7c04b4d4e869f6d09398d12f, type: 3}
+  m_UseUCBPForAssetBundles: 0

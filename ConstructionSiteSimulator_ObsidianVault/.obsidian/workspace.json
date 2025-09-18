@@ -1,0 +1,177 @@
+{
+  "main": {
+    "id": "a940b02d2aa57d18",
+    "type": "split",
+    "children": [
+      {
+        "id": "54959bb6f4b34700",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "397ea8315ce9b787",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "ShrimpOlympus.canvas",
+                "viewState": {
+                  "x": 2698.538866847471,
+                  "y": 1035.3662458584504,
+                  "zoom": -1.3995329173237276
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "ShrimpOlympus"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9b9d181d82fac668",
+    "type": "split",
+    "children": [
+      {
+        "id": "770e91a5da9ebf6d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6f291dc12662adef",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a970cfc91a53b36a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "061cca865e928f81",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "69c875695cfc0c26",
+    "type": "split",
+    "children": [
+      {
+        "id": "dbc2e111ee820449",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f4f9e548587d0714",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "ShrimpOlympus.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for ShrimpOlympus"
+            }
+          },
+          {
+            "id": "321dc9ce52523200",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "ShrimpOlympus.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from ShrimpOlympus"
+            }
+          },
+          {
+            "id": "f92624c0b9454114",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "fe165ee59c75c3ea",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "ShrimpOlympus.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of ShrimpOlympus"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "397ea8315ce9b787",
+  "lastOpenFiles": []
+}
