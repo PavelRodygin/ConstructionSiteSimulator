@@ -7,7 +7,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [Header("Configuration")]
         [SerializeField] private CraneSpecificationSO craneSpecification;
         
-        [Header("Components")]
         [SerializeField] private Hook hook;
         [SerializeField] private Transform cableAnchor;
         
@@ -15,13 +14,13 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [SerializeField] private Transform minPositionMarker;
         [SerializeField] private Transform maxPositionMarker;
 
-        private Vector3 _startPosition;
-        private Vector3 _endPosition;
-        private float _currentPosition; // [0; 1;]
+        private Vector3 _localStartPosition;
+        private Vector3 _localEndPosition;
+        private float _currentPosition; // [0; 1]
         private bool _isMovingForward;
         private bool _isMovingBackward;
 
-        private float _currentHookDepth; //[0; 1;]
+        private float _currentHookDepth; // [0; 1]
         private bool _isHookMovingDown;
         private bool _isHookMovingUp;
         
@@ -42,8 +41,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             get
             {
                 if (!hook || !cableAnchor) return Vector3.zero;
-                
-                return hook.transform.position - cableAnchor.position;
+                return hook.transform.localPosition - cableAnchor.localPosition;
             }
         }
         
@@ -66,7 +64,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private void Start()
         {
-            InitializePositions();
+            UpdateLocalMarkerPositions();
+            UpdateCurrentPositionFromTransform();
             InitializeHook();
         }
         
@@ -76,17 +75,10 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             HandleHookMovement();
         }
         
-        private void InitializePositions()
-        {
-            // Calculate current position based on transform position
-            UpdateCurrentPositionFromTransform();
-        }
-
         private void InitializeHook()
         {
             if (!hook || !hook.Joint) return;
             
-            // Set initial hook position to the anchor level (depth = 0)
             Vector3 initialTarget = hook.Joint.targetPosition;
             initialTarget.y = 0f;
             hook.Joint.targetPosition = initialTarget;
@@ -129,82 +121,69 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _isHookMovingUp = false;
         }
         
-        public void SetHookDepth(float depth)
-        {
-            CurrentHookDepth = depth;
-            UpdateHookPosition();
-        }
-        
-        public bool AttachCargo()
-        {
-            return hook && hook.TryAttachCargo();
-        }
-        
-        public void DetachCargo()
-        {
-            if (hook) hook.TryDetachCargo();
-        }
-        
         public void ToggleCargoAttachment()
         {
             if (hook) hook.ToggleCargoAttachment();
         }
 
-        private void UpdateMarkerPositions()
+        private void UpdateLocalMarkerPositions()
         {
-            if (minPositionMarker && maxPositionMarker)
+            if (minPositionMarker && maxPositionMarker && transform.parent)
             {
-                _startPosition = minPositionMarker.position;
-                _endPosition = maxPositionMarker.position;
+                _localStartPosition = transform.parent.InverseTransformPoint(minPositionMarker.position);
+                _localEndPosition = transform.parent.InverseTransformPoint(maxPositionMarker.position);
             }
             else
             {
-                // Fallback: use current position as start and calculate end based on max distance
-                _startPosition = transform.position;
-                _endPosition = _startPosition + transform.forward * MaxTravelDistance;
+                _localStartPosition = Vector3.zero;
+                _localEndPosition = new Vector3(0, 0, MaxTravelDistance);
             }
         }
 
         private void UpdateCurrentPositionFromTransform()
         {
-            UpdateMarkerPositions();
+            UpdateLocalMarkerPositions();
             
-            Vector3 totalDistance = _endPosition - _startPosition;
-            Vector3 currentDistance = transform.position - _startPosition;
+            if (transform.parent == null) return;
+            
+            Vector3 localPos = transform.localPosition;
+            
+            Vector3 totalLocalDistance = _localEndPosition - _localStartPosition;
+            Vector3 currentLocalDistance = localPos - _localStartPosition;
 
-            if (!(totalDistance.magnitude > 0.01f)) return;
-            
-            _currentPosition = Vector3.Dot(currentDistance, totalDistance.normalized) / totalDistance.magnitude;
-            _currentPosition = Mathf.Clamp01(_currentPosition);
+            if (totalLocalDistance.magnitude > 0.01f)
+            {
+                _currentPosition = Vector3.Dot(currentLocalDistance, totalLocalDistance.normalized) / totalLocalDistance.magnitude;
+                _currentPosition = Mathf.Clamp01(_currentPosition);
+            }
         }
 
         private void HandleMovement()
         {
-            if (craneSpecification == null) return;
+            if (!craneSpecification || transform.parent == null) return;
             
-            UpdateMarkerPositions();
+            UpdateLocalMarkerPositions();
             
             float moveSpeed = craneSpecification.TrolleyMoveSpeed;
             float deltaTime = Time.deltaTime;
+            float normalizedSpeed = moveSpeed * deltaTime / MaxTravelDistance;
             
             if (_isMovingForward && _currentPosition < 1f)
             {
-                float moveAmount = moveSpeed * deltaTime / MaxTravelDistance;
-                CurrentPosition += moveAmount;
-                UpdateTransformPosition();
+                CurrentPosition += normalizedSpeed;
+                UpdateTransformLocalPosition();
             }
             else if (_isMovingBackward && _currentPosition > 0f)
             {
-                float moveAmount = moveSpeed * deltaTime / MaxTravelDistance;
-                CurrentPosition -= moveAmount;
-                UpdateTransformPosition();
+                CurrentPosition -= normalizedSpeed;
+                UpdateTransformLocalPosition();
             }
         }
 
-        private void UpdateTransformPosition()
+        private void UpdateTransformLocalPosition()
         {
-            Vector3 targetPosition = Vector3.Lerp(_startPosition, _endPosition, _currentPosition);
-            transform.position = targetPosition;
+            Vector3 targetLocalPosition = Vector3.Lerp(_localStartPosition, _localEndPosition, _currentPosition);
+            transform.localPosition = targetLocalPosition;
         }
 
         private void HandleHookMovement()
@@ -214,17 +193,16 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             float moveSpeed = craneSpecification.HookMoveSpeed;
             float maxDepth = craneSpecification.HookMaxDepth;
             float deltaTime = Time.deltaTime;
+            float normalizedSpeed = moveSpeed * deltaTime / maxDepth;
             
             if (_isHookMovingDown && _currentHookDepth < 1f)
             {
-                float moveAmount = moveSpeed * deltaTime / maxDepth;
-                CurrentHookDepth += moveAmount;
+                CurrentHookDepth += normalizedSpeed;
                 UpdateHookPosition();
             }
             else if (_isHookMovingUp && _currentHookDepth > 0f)
             {
-                float moveAmount = moveSpeed * deltaTime / maxDepth;
-                CurrentHookDepth -= moveAmount;
+                CurrentHookDepth -= normalizedSpeed;
                 UpdateHookPosition();
             }
         }
@@ -235,7 +213,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             
             float maxDepth = craneSpecification ? craneSpecification.HookMaxDepth : 15f;
             
-            // Update the Y component of the joint's target position to control hook depth
             Vector3 currentTarget = hook.Joint.targetPosition;
             currentTarget.y = -maxDepth * _currentHookDepth;
             hook.Joint.targetPosition = currentTarget;

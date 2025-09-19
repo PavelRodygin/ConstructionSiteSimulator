@@ -9,7 +9,7 @@ namespace CodeBase.Core.UI.Widgets.ProgressBars
     {
         [SerializeField] protected float animationDuration = 1f;
         private Tween _currentTween;
-        private float _currentProgress;
+        protected float _currentProgress;
 
         /// <summary>
         /// Updates the progress bar.

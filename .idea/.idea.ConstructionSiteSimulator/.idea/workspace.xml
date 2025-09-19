@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="92b8baef-a0c4-443f-a706-4a1db3466d33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Core/UI/Widgets/ProgressBars/BaseProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Core/UI/Widgets/ProgressBars/BaseProgressBar.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Implementation/UI/Widgets/ProgressBars/UniversalProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Implementation/UI/Widgets/ProgressBars/UniversalProgressBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758227143137</updated>
       <workItem from="1758227143211" duration="19750000" />
-      <workItem from="1758267923266" duration="6963000" />
+      <workItem from="1758267923266" duration="9546000" />
     </task>
     <servers />
   </component>

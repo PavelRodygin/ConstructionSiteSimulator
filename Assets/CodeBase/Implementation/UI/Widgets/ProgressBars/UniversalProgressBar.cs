@@ -10,8 +10,8 @@ namespace CodeBase.Implementation.UI.Widgets.ProgressBars
         [SerializeField] private TMP_Text progressValueText;
         [SerializeField] private Image progressBarFillImage;
         
-        private float _currentProgress = 0f;
-        
+        protected void Awake() => _currentProgress = 0f;
+
         protected override void UpdateProgressVisual(float progress)
         {
             _currentProgress = progress;

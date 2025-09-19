@@ -18,11 +18,7 @@ namespace Modules.Base.ConstructionSite.Scripts
     
     public class ConstructionSiteView : BaseView
     {
-        [Header("Navigation")]
         [SerializeField] private Button mainMenuButton;
-        
-        [Header("Sound")]
-        [SerializeField] private Toggle soundToggle;
 
         private ConstructionSiteCommands _commands;
 
