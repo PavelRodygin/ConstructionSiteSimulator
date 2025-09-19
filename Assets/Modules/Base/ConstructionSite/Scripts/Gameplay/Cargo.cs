@@ -2,7 +2,7 @@
 
 namespace Modules.Base.ThirdPersonMPModule.Scripts.Gameplay
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class Cargo : MonoBehaviour
     {
         [Header("Cargo Configuration")]
@@ -11,8 +11,8 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts.Gameplay
 
         public Rigidbody Rigidbody { get; private set; }
         public Transform AttachPoint => attachPoint ? attachPoint : transform;
-        public int Weight => (int)(Rigidbody.mass * 9.81f);
         public float Mass => Rigidbody.mass;
+        public int Weight => (int)(Rigidbody.mass * 9.81f);
         public bool IsAttachable => isAttachable && !IsAttached;
         public bool IsAttached { get; internal set; }
 
@@ -22,6 +22,9 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts.Gameplay
             
             if (!Rigidbody) 
                 Debug.LogError($"Cargo {name} is missing Rigidbody component!");
+                
+            if (!GetComponent<Collider>())
+                Debug.LogError($"Cargo {name} is missing Collider component for hook detection!");
         }
         
         public virtual void OnAttached()

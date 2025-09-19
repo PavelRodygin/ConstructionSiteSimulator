@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]
     public class Hook : MonoBehaviour
     {
         [Header("Hook Configuration")]
-        [SerializeField] private float attachmentDistance = 2f;
-        [SerializeField] private LayerMask cargoLayerMask = -1;
+        [SerializeField] private float attachmentRadius = 2f;
         
-        [Header("Joint Configuration")]
+        [Header("Cargo Joint Configuration")]
         [SerializeField] private float cargoJointSpring = 10000f;
         [SerializeField] private float cargoJointDamper = 1000f;
         [SerializeField] private float cargoJointMaxForce = 100000f;
 
+        private readonly List<Cargo> _nearbyCargoList = new();
+
         private ConfigurableJoint _cargoJoint;
-        private List<Cargo> _nearbyCargoList = new();
-        private Rigidbody _rigidbody;
+        private SphereCollider _triggerCollider;
         
         [field: SerializeField] public ConfigurableJoint Joint { get; private set; }
         
@@ -46,43 +46,69 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            SetupTriggerCollider();
             
             if (!Joint) 
                 Debug.LogWarning($"Hook {name} is missing ConfigurableJoint reference!");
         }
         
-        private void Update()
+        private void OnTriggerEnter(Collider collider)
         {
-            FindNearbyCargoObjects();
+            collider.TryGetComponent<Cargo>(out var cargo);
+            
+            if (cargo && cargo != CurrentCargo && cargo.IsAttachable && !_nearbyCargoList.Contains(cargo))
+                _nearbyCargoList.Add(cargo);
         }
         
-        /// <summary>
-        /// Attempts to attach to the nearest cargo object
-        /// </summary>
-        public bool AttachCargo()
+        private void OnTriggerExit(Collider other)
+        {
+            var cargo = other.GetComponent<Cargo>();
+            
+            if (cargo) _nearbyCargoList.Remove(cargo);
+        }
+        
+        private void SetupTriggerCollider()
+        {
+            _triggerCollider = GetComponent<SphereCollider>();
+            
+            if (!_triggerCollider) 
+                _triggerCollider = gameObject.AddComponent<SphereCollider>();
+            
+            _triggerCollider.isTrigger = true;
+            _triggerCollider.radius = attachmentRadius;
+            
+            _triggerCollider.center = Vector3.down * 0.5f; // Offset to hook point
+        }
+        
+        public bool TryAttachCargo()
         {
             if (HasCargoAttached) return false;
             
-            Cargo nearestCargo = FindNearestCargo();
-            if (nearestCargo == null) return false;
+            var nearestCargo = FindNearestCargo();
             
-            return AttachToSpecificCargo(nearestCargo);
+            return nearestCargo && AttachToSpecificCargo(nearestCargo);
         }
         
         public void TryDetachCargo()
         {
             if (!HasCargoAttached) return;
             
+            var detachedCargo = CurrentCargo;
             CurrentCargo.OnDetached();
             
-            if (_cargoJoint != null)
+            if (_cargoJoint)
             {
                 DestroyImmediate(_cargoJoint);
                 _cargoJoint = null;
             }
             
             CurrentCargo = null;
+            
+            // Re-add to nearby list if still in trigger range
+            if (_nearbyCargoList.Contains(detachedCargo) && detachedCargo.IsAttachable)
+            {
+                // Keep it in the list for potential re-attachment
+            }
         }
         
         public void ToggleCargoAttachment()
@@ -90,7 +116,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             if (HasCargoAttached)
                 TryDetachCargo();
             else
-                AttachCargo();
+                TryAttachCargo();
         }
         
         private bool AttachToSpecificCargo(Cargo cargo)
@@ -100,7 +126,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _cargoJoint = gameObject.AddComponent<ConfigurableJoint>();
             _cargoJoint.connectedBody = cargo.Rigidbody;
             
-            Vector3 localAttachPoint = cargo.Rigidbody.transform.InverseTransformPoint(cargo.AttachPoint.position);
+            var localAttachPoint = cargo.Rigidbody.transform.InverseTransformPoint(cargo.AttachPoint.position);
             _cargoJoint.connectedAnchor = localAttachPoint;
             
             ConfigureCargoJoint(_cargoJoint);
@@ -146,20 +172,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             joint.anchor = Vector3.down * 0.5f;
         }
         
-        private void FindNearbyCargoObjects()
-        {
-            _nearbyCargoList.Clear();
-            
-            Collider[] colliders = Physics.OverlapSphere(transform.position, attachmentDistance, cargoLayerMask);
-            
-            foreach (var collider in colliders)
-            {
-                var cargo = collider.GetComponent<Cargo>();
-                
-                if (cargo && cargo != CurrentCargo && cargo.IsAttachable) _nearbyCargoList.Add(cargo);
-            }
-        }
-        
         private Cargo FindNearestCargo()
         {
             if (_nearbyCargoList.Count == 0) return null;
@@ -185,8 +197,9 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         {
             // Draw attachment range
             Gizmos.color = HasCargoAttached ? Color.green : Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, attachmentDistance);
-
+            Vector3 triggerCenter = transform.position + Vector3.down * 0.5f;
+            Gizmos.DrawWireSphere(triggerCenter, attachmentRadius);
+ 
             if (!HasCargoAttached || CurrentCargo == null) return;
             
             Gizmos.color = Color.red;

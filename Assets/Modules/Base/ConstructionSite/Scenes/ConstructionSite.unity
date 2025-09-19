@@ -633,11 +633,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aa38d7b0e367ecc4aac915dcfe957879, type: 3}
   m_PrefabInstance: {fileID: 481749596}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &706277207 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4463090278582586105, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-  m_PrefabInstance: {fileID: 4467917578254403203}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &931399181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1238,12 +1233,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803734350}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25673714, y: -2.842171e-14, z: 7.1054274e-15, w: 0.96648127}
-  m_LocalPosition: {x: 0, y: 1.225, z: -0.703}
+  m_LocalRotation: {x: -0.00000009181634, y: 0.96648127, z: -0.25673714, w: -0.0000003456406}
+  m_LocalPosition: {x: -9, y: 30.213, z: 34.156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 706277207}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 29.753, y: 0, z: 0}
 --- !u!114 &1803734353
 MonoBehaviour:
@@ -2010,12 +2005,13 @@ PrefabInstance:
       propertyPath: m_ProbeAnchor
       value: 
       objectReference: {fileID: 1210197013}
+    - target: {fileID: 8478267778972091037, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4463090278582586105, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1803734352}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
 --- !u!1 &5026200320579579519
@@ -2428,3 +2424,4 @@ SceneRoots:
   - {fileID: 1392263547}
   - {fileID: 470850091}
   - {fileID: 245920583}
+  - {fileID: 1803734352}

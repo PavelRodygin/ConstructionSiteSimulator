@@ -266,7 +266,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         /// </summary>
         public bool AttachCargo()
         {
-            return hook && hook.AttachCargo();
+            return hook && hook.TryAttachCargo();
         }
         
         /// <summary>
