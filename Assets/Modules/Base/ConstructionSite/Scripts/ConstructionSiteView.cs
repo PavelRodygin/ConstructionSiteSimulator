@@ -36,20 +36,6 @@ namespace Modules.Base.ConstructionSite.Scripts
                     .Subscribe(_ => _commands.OpenMainMenuCommand.Execute(default))
                     .AddTo(this);
             }
-            
-            // if (settingsButton != null)
-            // {
-            //     settingsButton.OnClickAsObservable()
-            //         .Subscribe(_ => _commands.SettingsPopupCommand.Execute(Unit.Default))
-            //         .AddTo(this);
-            // }
-            //
-            // if (soundToggle != null)
-            // {
-            //     soundToggle.OnValueChangedAsObservable()
-            //         .Subscribe(isOn => _commands.ToggleSoundCommand.Execute(isOn))
-            //         .AddTo(this);
-            // }
         }
     }
 }

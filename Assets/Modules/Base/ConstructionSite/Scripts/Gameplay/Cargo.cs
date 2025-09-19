@@ -29,24 +29,12 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay
         public virtual void OnAttached()
         {
             IsAttached = true;
-            Debug.Log($"Cargo {name} attached (Weight: {Weight}kg)");
         }
         
         public virtual void OnDetached()
         {
             IsAttached = false;
-            Debug.Log($"Cargo {name} detached");
         }
         
-        private void OnDrawGizmosSelected()
-        {
-            if (!attachPoint) return;
-            
-            Gizmos.color = IsAttached ? Color.green : Color.yellow;
-            Gizmos.DrawWireSphere(attachPoint.position, 0.3f);
-            
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(transform.position, attachPoint.position);
-        }
     }
 }

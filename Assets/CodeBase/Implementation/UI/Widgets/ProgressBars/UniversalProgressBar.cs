@@ -17,17 +17,13 @@ namespace CodeBase.Implementation.UI.Widgets.ProgressBars
             _currentProgress = progress;
             var exponentialProgress = CalculateExponentialProgress(progress);
             
-            if (progressBarFillImage != null)
-            {
+            if (progressBarFillImage) 
                 progressBarFillImage.fillAmount = exponentialProgress;
-            }
 
-            if (progressValueText != null)
+            if (progressValueText)
             {
                 var percentage = (int)(exponentialProgress * 100);
                 progressValueText.text = $"{percentage}%";
-                // Debug log to verify text updates
-                Debug.Log($"[UniversalProgressBar] Progress: {progress:F2} -> Exponential: {exponentialProgress:F2} -> Text: {percentage}%");
             }
             else
             {

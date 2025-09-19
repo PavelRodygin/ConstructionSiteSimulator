@@ -35,16 +35,11 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             if (!sphereCollider)
             {
                 sphereCollider = gameObject.AddComponent<SphereCollider>();
-                if (showSetupInfo)
-                    Debug.Log($"Added SphereCollider to hook {name}");
             }
             
             sphereCollider.isTrigger = true;
             sphereCollider.center = Vector3.down * 0.5f;
             sphereCollider.radius = 2f; // Default attachment radius
-            
-            if (showSetupInfo)
-                Debug.Log($"Hook {name} collider setup complete!");
         }
         
         private void OnValidate()

@@ -1,23 +1,17 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 {
     [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]
     public class Hook : MonoBehaviour
     {
-        [Header("Hook Configuration")]
-        [SerializeField] private float attachmentRadius = 2f;
-        
         [Header("Cargo Joint Configuration")]
         [SerializeField] private float cargoJointSpring = 10000f;
         [SerializeField] private float cargoJointDamper = 1000f;
         [SerializeField] private float cargoJointMaxForce = 100000f;
 
-        private readonly List<Cargo> _nearbyCargoList = new();
-
         private ConfigurableJoint _cargoJoint;
-        private SphereCollider _triggerCollider;
+        private Cargo _nearbyCargo;
         
         [field: SerializeField] public ConfigurableJoint Joint { get; private set; }
         
@@ -45,54 +39,39 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private void Awake()
         {
-            SetupTriggerCollider();
-            
             if (!Joint) 
                 Debug.LogWarning($"Hook {name} is missing ConfigurableJoint reference!");
         }
         
         private void OnTriggerEnter(Collider collider)
         {
+            if (_nearbyCargo != null) return; // Already have cargo in range
+            
             collider.TryGetComponent<Cargo>(out var cargo);
             
-            if (cargo && cargo != CurrentCargo && cargo.IsAttachable && !_nearbyCargoList.Contains(cargo))
-                _nearbyCargoList.Add(cargo);
+            if (cargo && cargo != CurrentCargo && cargo.IsAttachable)
+                _nearbyCargo = cargo;
         }
         
         private void OnTriggerExit(Collider other)
         {
             var cargo = other.GetComponent<Cargo>();
             
-            if (cargo) _nearbyCargoList.Remove(cargo);
-        }
-        
-        private void SetupTriggerCollider()
-        {
-            _triggerCollider = GetComponent<SphereCollider>();
-            
-            if (!_triggerCollider) 
-                _triggerCollider = gameObject.AddComponent<SphereCollider>();
-            
-            _triggerCollider.isTrigger = true;
-            _triggerCollider.radius = attachmentRadius;
-            
-            _triggerCollider.center = Vector3.down * 0.5f; // Offset to hook point
+            if (cargo == _nearbyCargo)
+                _nearbyCargo = null;
         }
         
         public bool TryAttachCargo()
         {
-            if (HasCargoAttached) return false;
+            if (HasCargoAttached || _nearbyCargo == null) return false;
             
-            var nearestCargo = FindNearestCargo();
-            
-            return nearestCargo && AttachToSpecificCargo(nearestCargo);
+            return AttachToSpecificCargo(_nearbyCargo);
         }
         
         public void TryDetachCargo()
         {
             if (!HasCargoAttached) return;
             
-            // var detachedCargo = CurrentCargo;
             CurrentCargo.OnDetached();
             
             if (_cargoJoint)
@@ -102,9 +81,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             }
             
             CurrentCargo = null;
-            
-            //For potential reattachment
-            // if (_nearbyCargoList.Contains(detachedCargo) && detachedCargo.IsAttachable) { }
         }
         
         public void ToggleCargoAttachment()
@@ -130,7 +106,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             CurrentCargo = cargo;
             CurrentCargo.OnAttached();
             
-            Debug.Log($"Hook attached to cargo: {cargo.name} (Weight: {cargo.Weight}kg)");
             return true;
         }
         
@@ -167,38 +142,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             joint.anchor = Vector3.down * 0.5f;
         }
         
-        private Cargo FindNearestCargo()
-        {
-            if (_nearbyCargoList.Count == 0) return null;
-            
-            Cargo nearest = null;
-            float nearestDistance = float.MaxValue;
-            
-            foreach (var cargo in _nearbyCargoList)
-            {
-                // Use attachment point for distance calculation
-                float distance = Vector3.Distance(transform.position, cargo.AttachPoint.position);
-                
-                if (!(distance < nearestDistance)) continue;
-                
-                nearestDistance = distance;
-                nearest = cargo;
-            }
-            
-            return nearest;
-        }
         
-        private void OnDrawGizmosSelected()
-        {
-            // Draw attachment range
-            Gizmos.color = HasCargoAttached ? Color.green : Color.yellow;
-            Vector3 triggerCenter = transform.position + Vector3.down * 0.5f;
-            Gizmos.DrawWireSphere(triggerCenter, attachmentRadius);
- 
-            if (!HasCargoAttached || CurrentCargo == null) return;
-            
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, CurrentCargo.transform.position);
-        }
     }
 }

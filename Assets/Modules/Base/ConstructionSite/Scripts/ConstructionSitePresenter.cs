@@ -9,20 +9,7 @@ using Unit = R3.Unit;
 namespace Modules.Base.ConstructionSite.Scripts
 {
     /// <summary>
-    /// Presenter for ThirdPersonMP module that handles business logic and coordinates between Model and View
-    /// 
-    /// IMPORTANT: This is a thirdPersonMP file for ModuleCreator system.
-    /// When creating a new module, this file will be copied and modified.
-    /// 
-    /// Key points for customization:
-    /// 1. Change class name from ThirdPersonMPPresenter to YourModuleNamePresenter
-    /// 2. Update namespace Modules.Base.ThirdPersonMPModule.Scripts match your module location
-    /// 3. Add your specific business logic and commands
-    /// 4. Customize module navigation logic
-    /// 5. Implement your specific UI event handling
-    /// 6. Add any additional services or systems your module needs
-    /// 
-    /// NOTE: Navigation to MainMenuModule is already implemented via exit button
+    /// Presenter for ConstructionSite module that handles business logic and coordinates between Model and View
     /// </summary>
     public class ConstructionSitePresenter : IDisposable
     {
@@ -35,8 +22,6 @@ namespace Modules.Base.ConstructionSite.Scripts
         
         private ReactiveCommand<ModulesMap> _openNewModuleCommand;
         private readonly ReactiveCommand<Unit> _openMainMenuCommand = new();
-        // private readonly ReactiveCommand<Unit> _settingsPopupCommand = new();
-        // private readonly ReactiveCommand<bool> _toggleSoundCommand = new();
 
         public ConstructionSitePresenter(
             ConstructionSiteModuleModel constructionSiteModuleModel,
@@ -85,15 +70,6 @@ namespace Modules.Base.ConstructionSite.Scripts
                 .Subscribe(_ => OnMainMenuButtonClicked())
                 .AddTo(_disposables);
 
-            // _settingsPopupCommand
-            //     .ThrottleFirst(TimeSpan.FromMilliseconds(_constructionSiteModuleModel.CommandThrottleDelay))
-            //     .Subscribe(_ => OnSettingsPopupButtonClicked())
-            //     .AddTo(_disposables);
-            //
-            // _toggleSoundCommand
-            //     .ThrottleFirst(TimeSpan.FromMilliseconds(_constructionSiteModuleModel.CommandThrottleDelay))
-            //     .Subscribe(OnSoundToggled)
-            //     .AddTo(_disposables);
         }
 
         private void OnMainMenuButtonClicked()
@@ -101,14 +77,5 @@ namespace Modules.Base.ConstructionSite.Scripts
             _openNewModuleCommand.Execute(ModulesMap.MainMenu);
         }
 
-        // private void OnSettingsPopupButtonClicked()
-        // {
-        //     _popupHub.OpenSettingsPopup();
-        // }
-        //
-        // private void OnSoundToggled(bool isOn)
-        // {
-        //     _audioSystem.SetMusicVolume(isOn ? 1f : 0f);
-        // }
     }
 }

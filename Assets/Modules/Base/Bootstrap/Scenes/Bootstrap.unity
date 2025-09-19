@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2367485026069763279, guid: 78d3631625afb934d9755f98c73385b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5403959674503280930, guid: f2856663843a27e43bd0de577702a3cb, type: 3}
     - target: {fileID: 3329979933012813911, guid: 78d3631625afb934d9755f98c73385b8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

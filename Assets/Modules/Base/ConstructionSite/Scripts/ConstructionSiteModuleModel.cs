@@ -3,7 +3,7 @@ using CodeBase.Core.Patterns.Architecture.MVP;
 namespace Modules.Base.ConstructionSite.Scripts
 {
     /// <summary>
-    /// Model for ThirdPersonMP module that contains business logic and data
+    /// Model for ConstructionSite module that contains business logic and data
     /// </summary>
     public class ConstructionSiteModuleModel : IModel
     {

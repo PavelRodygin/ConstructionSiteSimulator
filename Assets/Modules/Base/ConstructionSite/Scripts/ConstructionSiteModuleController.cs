@@ -8,18 +8,8 @@ using R3;
 namespace Modules.Base.ConstructionSite.Scripts
 {
     /// <summary>
-        /// Main controller for ThirdPersonMP module that manages the module lifecycle
-        /// and coordinates between Presenter, Model and View
-        /// 
-        /// IMPORTANT: This is a thirdPersonMP file for ModuleCreator system.
-        /// When creating a new module, this file will be copied and modified.
-        /// 
-        /// Key points for customization:
-        /// 1. Change class name from ThirdPersonMPModuleController to YourModuleNameModuleController
-        /// 2. Update namespace Modules.Base.ThirdPersonMPModule.Scripts match your module location
-        /// 3. Customize module lifecycle management if needed
-        /// 4. Add specific initialization logic for your module
-        /// 5. Implement custom exit conditions if required
+    /// Main controller for ConstructionSite module that manages the module lifecycle
+    /// and coordinates between Presenter, Model and View
     /// </summary>
     public class ConstructionSiteModuleController : IModuleController
     {

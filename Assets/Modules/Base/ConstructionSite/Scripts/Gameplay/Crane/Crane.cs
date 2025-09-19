@@ -2,6 +2,7 @@ using CodeBase.Services.Input;
 using R3;
 using UnityEngine;
 using VContainer;
+using System;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 {
@@ -12,6 +13,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private InputSystemService _inputSystemService;
         private bool _isControlEnabled = false;
+        private readonly CompositeDisposable _inputDisposables = new();
         
         [Inject]
         private void Construct(InputSystemService inputSystemService)
@@ -42,6 +44,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 return;
             }
             
+            if (_isControlEnabled) return; // Already enabled
+            
             _inputSystemService.SwitchToCrane();
             _isControlEnabled = true;
             
@@ -54,6 +58,9 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             
             _inputSystemService.SwitchToUI();
             _isControlEnabled = false;
+            
+            // Dispose all input subscriptions
+            _inputDisposables.Clear();
         }
 
         private void SetupReactiveInput()
@@ -80,7 +87,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                             break;
                     }
                 })
-                .AddTo(this);
+                .AddTo(_inputDisposables);
             
             // Trolley input with state caching
             Observable.EveryUpdate()
@@ -102,7 +109,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                             break;
                     }
                 })
-                .AddTo(this);
+                .AddTo(_inputDisposables);
             
             // Hook movement input with state caching
             Observable.EveryUpdate()
@@ -124,13 +131,19 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                             break;
                     }
                 })
-                .AddTo(this);
+                .AddTo(_inputDisposables);
             
             // Cargo attachment (discrete action)
-            Observable.EveryUpdate()
-                .Where(_ => _isControlEnabled && actionMap.AttachCargo.WasPressedThisFrame())
+            _inputSystemService.GetPerformedObservable(actionMap.AttachCargo)
+                .Where(_ => _isControlEnabled)
+                .ThrottleFirst(TimeSpan.FromMilliseconds(200))
                 .Subscribe(_ => trolley.ToggleCargoAttachment())
-                .AddTo(this);
+                .AddTo(_inputDisposables);
+        }
+        
+        private void OnDestroy()
+        {
+            _inputDisposables?.Dispose();
         }
     }
 }
