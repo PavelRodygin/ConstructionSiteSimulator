@@ -20,6 +20,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         [Header("Trolley Settings")]
         [field: SerializeField] public float TrolleyMoveSpeed { get; private set; } = 5f; // m/s
+        [field: SerializeField] public float TrolleyAcceleration { get; private set; } = 10f; // m/s²
+        [field: SerializeField] public float TrolleyDeceleration { get; private set; } = 15f; // m/s²
         [field: SerializeField] public float TrolleyMaxDistance { get; private set; } = 20f; // meters
         
         [Header("Hook Settings")]

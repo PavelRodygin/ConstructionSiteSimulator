@@ -1119,12 +1119,12 @@ GameObject:
   - component: {fileID: 8831369806254986458}
   - component: {fileID: 61532895809473393}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: WidgetsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7788166166193545176
 Transform:
   m_ObjectHideFlags: 0
