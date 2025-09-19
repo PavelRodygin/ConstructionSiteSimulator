@@ -1981,6 +1981,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_Axis.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_Axis.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_Axis.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_SecondaryAxis.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_SecondaryAxis.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_SecondaryAxis.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3153217978534531013, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
       propertyPath: m_ProbeAnchor
       value: 
@@ -2005,10 +2029,6 @@ PrefabInstance:
       propertyPath: m_ProbeAnchor
       value: 
       objectReference: {fileID: 1210197013}
-    - target: {fileID: 8478267778972091037, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
