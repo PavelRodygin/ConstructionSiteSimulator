@@ -39,5 +39,13 @@ namespace Modules.Base.ConstructionSite.Scripts
             //Register Gameplay Components
             builder.RegisterComponent(crane).As<Crane>();
         }
+
+        public override void InjectSceneViews(IObjectResolver resolver)
+        {
+            base.InjectSceneViews(resolver);
+            
+            // Manually inject dependencies into scene objects
+            resolver.Inject(crane);
+        }
     }
 }

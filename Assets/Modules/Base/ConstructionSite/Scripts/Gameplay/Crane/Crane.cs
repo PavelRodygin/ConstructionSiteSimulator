@@ -11,22 +11,36 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [SerializeField] private Trolley trolley;
         
         private InputSystemService _inputSystemService;
-        private bool _isControlEnabled = true;
+        private bool _isControlEnabled = false;
         
         [Inject]
         private void Construct(InputSystemService inputSystemService)
         {
             _inputSystemService = inputSystemService;
+            
+            // Initialize controls after injection if the object is already active
+            if (gameObject.activeInHierarchy && enabled)
+            {
+                EnableCraneControls();
+            }
         }
 
         private void Start()
         {
-            EnableCraneControls();
+            // Only enable if not already enabled in Construct
+            if (_inputSystemService != null && !_isControlEnabled)
+            {
+                EnableCraneControls();
+            }
         }
 
         public void EnableCraneControls()
         {
-            if (_inputSystemService == null) return;
+            if (_inputSystemService == null)
+            {
+                Debug.LogWarning("InputSystemService is null! Cannot enable crane controls.");
+                return;
+            }
             
             _inputSystemService.SwitchToCrane();
             _isControlEnabled = true;

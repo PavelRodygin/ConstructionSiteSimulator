@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92b8baef-a0c4-443f-a706-4a1db3466d33" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/projectSettingsUpdater.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Configs/Cranes/CraneSpecification.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Configs/Cranes/CraneSpecification.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/Bootstrap/Scripts/BootstrapModuleModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/Bootstrap/Scripts/BootstrapModuleModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteModuleInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteModuleInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/RotatingBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/RotatingBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/ThirdPersonMPModuleView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/ThirdPersonMPModuleView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/View/MainMenuModuleView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/View/MainMenuModuleView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ThirdParty/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ThirdParty/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +30,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0c089f8b0b2e41dcab032121ad0d8ccd91400/6c/d84e8e81/ReactiveCommand`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1acad9deef3549c4b9617dfa169c66599f7e00/ab/9e9b3ec7/Editor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteModuleController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Cargo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/RotatingBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteModuleController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Cargo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/RotatingBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -106,7 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758227143137</updated>
       <workItem from="1758227143211" duration="19750000" />
-      <workItem from="1758267923266" duration="53000" />
+      <workItem from="1758267923266" duration="1847000" />
     </task>
     <servers />
   </component>
@@ -123,24 +126,5 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs</url>
-          <line>28</line>
-          <properties documentPath="D:\Repositories\ConstructionSiteSimulator\Assets\Modules\Base\ConstructionSite\Scripts\Gameplay\Crane\Crane.cs" containingFunctionPresentation="Method 'EnableCraneControls'">
-            <startOffsets>
-              <option value="731" />
-            </startOffsets>
-            <endOffsets>
-              <option value="763" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

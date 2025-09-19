@@ -92,7 +92,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         {
             if (!HasCargoAttached) return;
             
-            var detachedCargo = CurrentCargo;
+            // var detachedCargo = CurrentCargo;
             CurrentCargo.OnDetached();
             
             if (_cargoJoint)
@@ -103,11 +103,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             
             CurrentCargo = null;
             
-            // Re-add to nearby list if still in trigger range
-            if (_nearbyCargoList.Contains(detachedCargo) && detachedCargo.IsAttachable)
-            {
-                // Keep it in the list for potential re-attachment
-            }
+            //For potential reattachment
+            // if (_nearbyCargoList.Contains(detachedCargo) && detachedCargo.IsAttachable) { }
         }
         
         public void ToggleCargoAttachment()
@@ -167,7 +164,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             joint.yDrive = drive;
             joint.zDrive = drive;
             
-            // Set anchor to bottom of hook
             joint.anchor = Vector3.down * 0.5f;
         }
         

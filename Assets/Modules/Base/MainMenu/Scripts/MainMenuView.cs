@@ -10,24 +10,18 @@ namespace Modules.Base.MainMenu.Scripts
 {
     public readonly struct MainMenuCommands
     {
-        public readonly ReactiveCommand<Unit> OpenConverterCommand;
-        public readonly ReactiveCommand<Unit> OpenTicTacCommand;
-        public readonly ReactiveCommand<Unit> OpenRoguelikeCommand;
+        public readonly ReactiveCommand<Unit> OpenConstructionSiteCommand;
         public readonly ReactiveCommand<Unit> SettingsPopupCommand;
         public readonly ReactiveCommand<Unit> SecondPopupCommand;
         public readonly ReactiveCommand<bool> SoundToggleCommand;
 
         public MainMenuCommands(
-            ReactiveCommand<Unit> openConverterCommand,
-            ReactiveCommand<Unit> openTicTacCommand,
-            ReactiveCommand<Unit> openRoguelikeCommand,
+            ReactiveCommand<Unit> openConstructionSiteCommand,
             ReactiveCommand<Unit> settingsPopupCommand,
             ReactiveCommand<Unit> secondPopupCommand,
             ReactiveCommand<bool> soundToggleCommand)
         {
-            OpenConverterCommand = openConverterCommand;
-            OpenTicTacCommand = openTicTacCommand;
-            OpenRoguelikeCommand = openRoguelikeCommand;
+            OpenConstructionSiteCommand = openConstructionSiteCommand;
             SettingsPopupCommand = settingsPopupCommand;
             SecondPopupCommand = secondPopupCommand;
             SoundToggleCommand = soundToggleCommand;
@@ -37,9 +31,7 @@ namespace Modules.Base.MainMenu.Scripts
     public class MainMenuView : BaseView
     {
         [Header("Open Module Buttons")]
-        [SerializeField] private Button converterButton;
-        [SerializeField] private Button ticTacButton;
-        [SerializeField] private Button roguelikeButton;
+        [SerializeField] private Button constructionSiteButton;
         
         [SerializeField] private Button settingsPopupButton;
         [SerializeField] private Button secondPopupButton;
@@ -66,19 +58,9 @@ namespace Modules.Base.MainMenu.Scripts
         {
             _inputSystemService.SwitchToUI();
             
-            converterButton.OnClickAsObservable()
+            constructionSiteButton.OnClickAsObservable()
                 .Where(_ => IsActive)
-                .Subscribe(_ => commands.OpenConverterCommand.Execute(default))
-                .AddTo(this);
-
-            ticTacButton.OnClickAsObservable()
-                .Where(_ => IsActive)
-                .Subscribe(_ => commands.OpenTicTacCommand.Execute(default))
-                .AddTo(this);
-
-            roguelikeButton.OnClickAsObservable()
-                .Where(_ => IsActive)
-                .Subscribe(_ => commands.OpenRoguelikeCommand.Execute(default))
+                .Subscribe(_ => commands.OpenConstructionSiteCommand.Execute(default))
                 .AddTo(this);
 
             settingsPopupButton.OnClickAsObservable()
@@ -109,16 +91,14 @@ namespace Modules.Base.MainMenu.Scripts
 
         public void OnScreenEnabled()
         {
-            _inputSystemService.SetFirstSelectedObject(converterButton);
+            _inputSystemService.SetFirstSelectedObject(constructionSiteButton);
         }
 
         private void ValidateUIElements()
         {
             if (settingsPopupButton == null) Debug.LogError($"{nameof(settingsPopupButton)} is not assigned in {nameof(MainMenuView)}");
             if (secondPopupButton == null) Debug.LogError($"{nameof(secondPopupButton)} is not assigned in {nameof(MainMenuView)}");
-            if (converterButton == null) Debug.LogError($"{nameof(converterButton)} is not assigned in {nameof(MainMenuView)}");
-            if (ticTacButton == null) Debug.LogError($"{nameof(ticTacButton)} is not assigned in {nameof(MainMenuView)}");
-            if (roguelikeButton == null) Debug.LogError($"{nameof(roguelikeButton)} is not assigned in {nameof(MainMenuView)}");
+            if (constructionSiteButton == null) Debug.LogError($"{nameof(constructionSiteButton)} is not assigned in {nameof(MainMenuView)}");
             if (musicToggle == null) Debug.LogError($"{nameof(musicToggle)} is not assigned in {nameof(MainMenuView)}");
         }
     }

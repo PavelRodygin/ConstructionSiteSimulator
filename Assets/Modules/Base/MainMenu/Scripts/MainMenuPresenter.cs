@@ -29,9 +29,7 @@ namespace Modules.Base.MainMenu.Scripts
         private readonly IPopupHub _popupHub;
         private readonly AudioSystem _audioSystem;
         
-        private readonly ReactiveCommand<Unit> _openConverterCommand = new();
-        private readonly ReactiveCommand<Unit> _openTicTacCommand = new();
-        private readonly ReactiveCommand<Unit> _openRoguelikeCommand = new();
+        private readonly ReactiveCommand<Unit> _openConstructionSiteCommand = new();
         private readonly ReactiveCommand<Unit> _settingsPopupCommand = new();
         private readonly ReactiveCommand<Unit> _secondPopupCommand = new();
         private readonly ReactiveCommand<bool> _toggleSoundCommand = new();
@@ -52,17 +50,9 @@ namespace Modules.Base.MainMenu.Scripts
 
         private void SubscribeToUIUpdates()
         {
-            _openConverterCommand
+            _openConstructionSiteCommand
                 .ThrottleFirst(TimeSpan.FromMilliseconds(_mainMenuModuleModel.CommandThrottleDelay))
-                .Subscribe(_ => OnConverterCommand())
-                .AddTo(_disposables);
-            _openTicTacCommand
-                .ThrottleFirst(TimeSpan.FromMilliseconds(_mainMenuModuleModel.CommandThrottleDelay))
-                .Subscribe(_ => OnTicTacCommand())
-                .AddTo(_disposables);
-            _openRoguelikeCommand
-                .ThrottleFirst(TimeSpan.FromMilliseconds(_mainMenuModuleModel.CommandThrottleDelay))
-                .Subscribe(_ => OnThirdPersonMPCommand())
+                .Subscribe(_ => OnConstructionSiteCommand())
                 .AddTo(_disposables);
             _settingsPopupCommand
                 .ThrottleFirst(TimeSpan.FromMilliseconds(_mainMenuModuleModel.CommandThrottleDelay))
@@ -82,9 +72,7 @@ namespace Modules.Base.MainMenu.Scripts
             _mainMenuView.HideInstantly();
 
             var commands = new MainMenuCommands(
-                _openConverterCommand,
-                _openTicTacCommand,
-                _openRoguelikeCommand,
+                _openConstructionSiteCommand,
                 _settingsPopupCommand,
                 _secondPopupCommand,
                 _toggleSoundCommand
@@ -116,9 +104,7 @@ namespace Modules.Base.MainMenu.Scripts
             _mainMenuModuleModel?.Dispose();
         }
 
-        private void OnConverterCommand() => _openNewModuleCommand.Execute(ModulesMap.Converter);
-        private void OnTicTacCommand() => _openNewModuleCommand.Execute(ModulesMap.TicTac);
-        private void OnThirdPersonMPCommand() => _openNewModuleCommand.Execute(ModulesMap.ConstructionSite);
+        private void OnConstructionSiteCommand() => _openNewModuleCommand.Execute(ModulesMap.ConstructionSite);
         private void OnSettingsPopupCommand() => _popupHub.OpenSettingsPopup();
         private void OnSecondPopupCommand() => _popupHub.OpenSecondPopup();
         private void OnToggleSoundCommand(bool isOn) => _audioSystem.SetMusicVolume(isOn ? 1 : 0);

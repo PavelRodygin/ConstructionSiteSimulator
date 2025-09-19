@@ -30,10 +30,10 @@ namespace Modules.Base.ConstructionSite.Scripts
         {
             _commands = commands;
             
-            if (mainMenuButton != null)
+            if (mainMenuButton)
             {
                 mainMenuButton.OnClickAsObservable()
-                    .Subscribe(_ => _commands.OpenMainMenuCommand.Execute(Unit.Default))
+                    .Subscribe(_ => _commands.OpenMainMenuCommand.Execute(default))
                     .AddTo(this);
             }
             

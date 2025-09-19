@@ -34,16 +34,16 @@ namespace Modules.Base.Bootstrap.Scripts
             
             _tooltips = new []
             {
-                "Shrimp can change color to blend into their surroundings!",
-                "A shrimp's heart is located in its head.",
-                "Some shrimp species can live up to 6 years in the wild.",
-                "Shrimp have 10 legs, but only the front two are used for walking.",
-                "The smallest shrimp species is only about 1 cm long.",
-                "Shrimp can swim backward by quickly flexing their tails.",
-                "Certain shrimp can generate a sound louder than a gunshot with their claws!",
-                "Shrimp have a lifespan that varies from a few months to several years.",
-                "Some shrimp species are known to clean parasites off other sea creatures.",
-                "Shrimp are a key part of the ocean food chain, feeding many larger animals."
+                "Always perform a pre-operation inspection on the crane to spot potential issues early!",
+                "Wear your hard hat and high-visibility vest—PPE is your first line of defense on site.",
+                "Keep a safe distance from overhead power lines to avoid electrical hazards.",
+                "Never exceed the crane's rated load capacity; it's there for a reason!",
+                "Use a qualified signal person for clear communication during lifts.",
+                "Secure loads with proper rigging to prevent swings or drops mid-air.",
+                "Monitor wind speeds—strong gusts can turn a stable lift into a wild ride.",
+                "Follow lockout/tagout procedures before any maintenance work.",
+                "Only certified operators should handle the controls; training saves lives.",
+                "Report any crane defects immediately—safety first, always!"
             };
         }
         

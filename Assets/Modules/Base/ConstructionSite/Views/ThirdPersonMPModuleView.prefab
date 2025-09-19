@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: ThirdPersonMPModule::Modules.Base.ThirdPersonMPModule.Scripts.ThirdPersonMPView
   <AnimationElement>k__BackingField: {fileID: 140403774526292463}
-  mainMenuButton: {fileID: 0}
+  mainMenuButton: {fileID: 3212842411858370114}
   soundToggle: {fileID: 0}
 --- !u!114 &140403774526292463
 MonoBehaviour:
