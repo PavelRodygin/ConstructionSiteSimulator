@@ -241,4 +241,4 @@ This project was developed as a **24-hour rapid prototype** to demonstrate:
 - Physics-based crane simulation
 - Component isolation and extensibility
 
-While the core functionality is complete and working, some refinements and optimizations are ongoing. The focus was on showcasing the architectural approach and extensibility potential rather than production-ready polish.
+While the core functionality is complete and working, some refinements and optimizations are ongoing. The focus was on showcasing the work with Physics and architectural approach and extensibility potential rather than production-ready polish.
