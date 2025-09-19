@@ -25,6 +25,7 @@ namespace CodeBase.Services.Input
         
         public event Action OnSwitchToUI;
         public event Action OnSwitchToPlayerHumanoid;
+        public event Action OnSwitchToCrane;
         // public event Action OnSwitchToWhatDoYouWant;
         // Also may be replaced by Action<ActionMap>
         
@@ -41,6 +42,7 @@ namespace CodeBase.Services.Input
         public void SwitchToUI()
         {
             InputActions.PlayerHumanoid.Disable();
+            InputActions.Crane.Disable();
             InputActions.UI.Enable(); // Убеждаемся, что UI всегда включён
             Debug.Log("Switched to UI mode.");
             OnSwitchToUI?.Invoke();
@@ -51,10 +53,23 @@ namespace CodeBase.Services.Input
         /// </summary>
         public void SwitchToPlayerHumanoid()
         {
+            InputActions.Crane.Disable();
             InputActions.PlayerHumanoid.Enable();
             InputActions.UI.Enable(); // UI остаётся включённым
             Debug.Log("Switched to PlayerHumanoid mode.");
             OnSwitchToPlayerHumanoid?.Invoke();
+        }
+
+        /// <summary>
+        /// Enables Crane Action Map, keeping UI enabled.
+        /// </summary>
+        public void SwitchToCrane()
+        {
+            InputActions.PlayerHumanoid.Disable();
+            InputActions.Crane.Enable();
+            InputActions.UI.Enable(); // UI остаётся включённым
+            Debug.Log("Switched to Crane mode.");
+            OnSwitchToCrane?.Invoke();
         }
 
         /// <summary>
@@ -84,6 +99,11 @@ namespace CodeBase.Services.Input
         /// Checks if the PlayerHumanoid Action Map is enabled.
         /// </summary>
         public bool IsPlayerHumanoidInputEnabled() => InputActions.PlayerHumanoid.enabled;
+
+        /// <summary>
+        /// Checks if the Crane Action Map is enabled.
+        /// </summary>
+        public bool IsCraneInputEnabled() => InputActions.Crane.enabled;
         
         /// <summary>
         /// Sets the first selected object for UI navigation.
@@ -149,6 +169,7 @@ namespace CodeBase.Services.Input
             if (InputActions == null) return;
 
             InputActions.PlayerHumanoid.Disable();
+            InputActions.Crane.Disable();
             InputActions.UI.Disable();
             
             InputActions.Disable();

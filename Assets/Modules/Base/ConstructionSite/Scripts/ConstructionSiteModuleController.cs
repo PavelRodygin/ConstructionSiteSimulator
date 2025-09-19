@@ -3,9 +3,7 @@ using CodeBase.Core.Infrastructure;
 using CodeBase.Core.Infrastructure.Modules;
 using CodeBase.Services.Input;
 using Cysharp.Threading.Tasks;
-using MediatR;
 using R3;
-using VContainer;
 
 namespace Modules.Base.ThirdPersonMPModule.Scripts
 {
@@ -25,7 +23,6 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
     /// </summary>
     public class ConstructionSiteModuleController : IModuleController
     {
-        [Inject] private IMediator _mediator;
         private readonly IScreenStateMachine _screenStateMachine;
         private readonly InputSystemService _inputSystemService;
         private readonly ConstructionSiteModuleModel _constructionSiteModuleModel;
@@ -52,7 +49,7 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
 
             _constructionSitePresenter.HideInstantly();
             
-            _inputSystemService.SwitchToPlayerHumanoid();
+            _inputSystemService.SwitchToCrane();
             await _constructionSitePresenter.Enter(_openNewModuleCommand);
         }
 

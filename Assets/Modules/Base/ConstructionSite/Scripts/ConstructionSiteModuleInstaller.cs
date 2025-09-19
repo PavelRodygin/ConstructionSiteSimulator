@@ -1,5 +1,5 @@
-using CodeBase.Core;
 using CodeBase.Services.SceneInstallerService;
+using Modules.Base.ConstructionSite.Scripts.Gameplay.Crane;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -22,12 +22,11 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
     public class ConstructionSiteModuleInstaller : BaseModuleSceneInstaller
     {
         [SerializeField] private ConstructionSiteView constructionSiteView;
+        [SerializeField] private Crane crane;
 
         public override void RegisterSceneDependencies(IContainerBuilder builder)
         {
             base.RegisterSceneDependencies(builder);
-
-            builder.AddMediatR(typeof(ThirdPersonMPHandler).Assembly);
             
             // Register main module controller
             builder.Register<ConstructionSiteModuleController>(Lifetime.Singleton);
@@ -36,6 +35,9 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
             builder.Register<ConstructionSiteModuleModel>(Lifetime.Singleton);
             builder.Register<ConstructionSitePresenter>(Lifetime.Singleton);
             builder.RegisterComponent(constructionSiteView).As<ConstructionSiteView>();
+            
+            //Register Gameplay Components
+            builder.RegisterComponent(crane).As<Crane>();
         }
     }
 }

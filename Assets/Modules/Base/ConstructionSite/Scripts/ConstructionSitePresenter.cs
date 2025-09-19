@@ -1,31 +1,13 @@
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using CodeBase.Core.Infrastructure;
 using CodeBase.Core.Systems;
 using CodeBase.Core.Systems.PopupHub;
 using Cysharp.Threading.Tasks;
-using MediatR;
 using R3;
-using UnityEngine;
 using Unit = R3.Unit;
 
 namespace Modules.Base.ThirdPersonMPModule.Scripts
 {
-    /// <summary>
-    /// Request handler for ThirdPersonMP module operations
-    /// </summary>
-    public class ThirdPersonMPRequest : IRequest<string> { }
-
-    /// <summary>
-    /// Handler for ThirdPersonMP module requests
-    /// </summary>
-    public class ThirdPersonMPHandler : IRequestHandler<ThirdPersonMPRequest, string>
-    {
-        public Task<string> Handle(ThirdPersonMPRequest request, CancellationToken cancellationToken) => 
-            Task.FromResult("ThirdPersonMP Handler Invoked!");
-    }
-    
     /// <summary>
     /// Presenter for ThirdPersonMP module that handles business logic and coordinates between Model and View
     /// 
@@ -53,8 +35,8 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
         
         private ReactiveCommand<ModulesMap> _openNewModuleCommand;
         private readonly ReactiveCommand<Unit> _openMainMenuCommand = new();
-        private readonly ReactiveCommand<Unit> _settingsPopupCommand = new();
-        private readonly ReactiveCommand<bool> _toggleSoundCommand = new();
+        // private readonly ReactiveCommand<Unit> _settingsPopupCommand = new();
+        // private readonly ReactiveCommand<bool> _toggleSoundCommand = new();
 
         public ConstructionSitePresenter(
             ConstructionSiteModuleModel constructionSiteModuleModel,
@@ -74,16 +56,11 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
             
             _constructionSiteView.HideInstantly();
 
-            var commands = new ThirdPersonMPCommands(
-                _openMainMenuCommand,
-                _settingsPopupCommand,
-                _toggleSoundCommand
-            );
+            var commands = new ConstructionSiteCommands(_openMainMenuCommand);
 
             _constructionSiteView.SetupEventListeners(commands);
             SubscribeToUIUpdates();
 
-            // _thirdPersonMPView.InitializeSoundToggle(isMusicOn: _audioSystem.MusicVolume != 0);
             await _constructionSiteView.Show();
             
             _audioSystem.PlayMainMenuMelody();
@@ -108,15 +85,15 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
                 .Subscribe(_ => OnMainMenuButtonClicked())
                 .AddTo(_disposables);
 
-            _settingsPopupCommand
-                .ThrottleFirst(TimeSpan.FromMilliseconds(_constructionSiteModuleModel.CommandThrottleDelay))
-                .Subscribe(_ => OnSettingsPopupButtonClicked())
-                .AddTo(_disposables);
-
-            _toggleSoundCommand
-                .ThrottleFirst(TimeSpan.FromMilliseconds(_constructionSiteModuleModel.CommandThrottleDelay))
-                .Subscribe(OnSoundToggled)
-                .AddTo(_disposables);
+            // _settingsPopupCommand
+            //     .ThrottleFirst(TimeSpan.FromMilliseconds(_constructionSiteModuleModel.CommandThrottleDelay))
+            //     .Subscribe(_ => OnSettingsPopupButtonClicked())
+            //     .AddTo(_disposables);
+            //
+            // _toggleSoundCommand
+            //     .ThrottleFirst(TimeSpan.FromMilliseconds(_constructionSiteModuleModel.CommandThrottleDelay))
+            //     .Subscribe(OnSoundToggled)
+            //     .AddTo(_disposables);
         }
 
         private void OnMainMenuButtonClicked()
@@ -124,14 +101,14 @@ namespace Modules.Base.ThirdPersonMPModule.Scripts
             _openNewModuleCommand.Execute(ModulesMap.MainMenu);
         }
 
-        private void OnSettingsPopupButtonClicked()
-        {
-            _popupHub.OpenSettingsPopup();
-        }
-
-        private void OnSoundToggled(bool isOn)
-        {
-            _audioSystem.SetMusicVolume(isOn ? 1f : 0f);
-        }
+        // private void OnSettingsPopupButtonClicked()
+        // {
+        //     _popupHub.OpenSettingsPopup();
+        // }
+        //
+        // private void OnSoundToggled(bool isOn)
+        // {
+        //     _audioSystem.SetMusicVolume(isOn ? 1f : 0f);
+        // }
     }
 }

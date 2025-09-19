@@ -12,20 +12,11 @@ EditorBuildSettings:
     path: Assets/Modules/Base/MainMenu/Scenes/MainMenu.unity
     guid: 6c1b24bd33fa328499eebad74527aa27
   - enabled: 1
-    path: Assets/Modules/Base/Converter/Scenes/Converter.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Modules/Base/TicTac/Scenes/TicTac.unity
-    guid: da7fbbe19be543541b43cc4121ba7dbd
-  - enabled: 1
-    path: Assets/Modules/Additional/DynamicBackground/Scene/DynamicBackground.unity
-    guid: d502e3d7e375cac4dabf03194eddeed6
+    path: Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity
+    guid: fe80e751ed2d8f246a9de58f6059bc67
   - enabled: 1
     path: Assets/Modules/Additional/PopupsManager/Scenes/PopupsManager.unity
     guid: 0fd8d7b6ee230064aa06ea08bcb21331
-  - enabled: 1
-    path: Assets/Modules/Additional/SplashScreen/Scene/SplashScreen.unity
-    guid: b17be873bd53f264ebed7bef2029cf59
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: b350deea38b5f984c8a6f1db80e26621, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
