@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.CraneSpecificationSO
   <BaseRotationSpeed>k__BackingField: 5
   <MinRotationSpeed>k__BackingField: 2.5
-  <RotationAcceleration>k__BackingField: 30
-  <RotationDeceleration>k__BackingField: 60
+  <RotationAcceleration>k__BackingField: 15
+  <RotationDeceleration>k__BackingField: 30
   <RatedCargoWeight>k__BackingField: 10000
   <MaxCargoWeight>k__BackingField: 40000
   <MaxSpeedReduction>k__BackingField: 0.75

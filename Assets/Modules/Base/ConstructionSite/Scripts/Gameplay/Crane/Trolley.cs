@@ -25,18 +25,12 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         private bool _isHookMovingDown;
         private bool _isHookMovingUp;
         
-        /// <summary>
-        /// Current trolley position relative to the closest point to crane base (0-1 range)
-        /// </summary>
         public float CurrentPosition 
         { 
             get => _currentPosition;
             private set => _currentPosition = Mathf.Clamp01(value);
         }
         
-        /// <summary>
-        /// Current hook depth relative to cable anchor (0-1 range)
-        /// </summary>
         public float CurrentHookDepth
         {
             get => _currentHookDepth;
@@ -53,9 +47,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             }
         }
         
-        /// <summary>
-        /// Current hook target position from Joint
-        /// </summary>
         public Vector3 HookTargetPosition
         {
             get
@@ -65,24 +56,12 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             }
         }
         
-        /// <summary>
-        /// Current load on the hook in kg
-        /// </summary>
         public float CurrentHookLoad => hook ? hook.CurrentLoadKg : 0f;
         
-        /// <summary>
-        /// Current load on the hook joint in Newtons
-        /// </summary>
         public float CurrentHookLoadNewtons => hook ? hook.CurrentLoad : 0f;
         
-        /// <summary>
-        /// Whether the hook has cargo attached
-        /// </summary>
         public bool HasCargoAttached => hook && hook.HasCargoAttached;
         
-        /// <summary>
-        /// Maximum trolley travel distance
-        /// </summary>
         public float MaxTravelDistance => craneSpecification != null ? craneSpecification.TrolleyMaxDistance : 20f;
         
         private void Start()
@@ -102,7 +81,87 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             // Calculate current position based on transform position
             UpdateCurrentPositionFromTransform();
         }
-        
+
+        private void InitializeHook()
+        {
+            if (!hook || !hook.Joint) return;
+            
+            // Set initial hook position to the anchor level (depth = 0)
+            Vector3 initialTarget = hook.Joint.targetPosition;
+            initialTarget.y = 0f;
+            hook.Joint.targetPosition = initialTarget;
+            _currentHookDepth = 0f;
+        }
+
+        public void MoveForward()
+        {
+            _isMovingForward = true;
+            _isMovingBackward = false;
+        }
+
+        public void MoveBackward()
+        {
+            _isMovingForward = false;
+            _isMovingBackward = true;
+        }
+
+        public void StopMovement()
+        {
+            _isMovingForward = false;
+            _isMovingBackward = false;
+        }
+
+        public void MoveHookDown()
+        {
+            _isHookMovingDown = true;
+            _isHookMovingUp = false;
+        }
+
+        public void MoveHookUp()
+        {
+            _isHookMovingDown = false;
+            _isHookMovingUp = true;
+        }
+
+        public void StopHookMovement()
+        {
+            _isHookMovingDown = false;
+            _isHookMovingUp = false;
+        }
+
+        /// <summary>
+        /// Sets hook depth directly (0 = at anchor level, 1 = max depth)
+        /// </summary>
+        public void SetHookDepth(float depth)
+        {
+            CurrentHookDepth = depth;
+            UpdateHookPosition();
+        }
+
+        /// <summary>
+        /// Attempts to attach cargo to the hook
+        /// </summary>
+        public bool AttachCargo()
+        {
+            return hook && hook.TryAttachCargo();
+        }
+
+        /// <summary>
+        /// Detaches cargo from the hook
+        /// </summary>
+        public void DetachCargo()
+        {
+            if (hook) hook.TryDetachCargo();
+        }
+
+        /// <summary>
+        /// Toggles cargo attachment on the hook
+        /// </summary>
+        public void ToggleCargoAttachment()
+        {
+            if (hook) hook.ToggleCargoAttachment();
+        }
+
         private void UpdateMarkerPositions()
         {
             if (minPositionMarker && maxPositionMarker)
@@ -117,7 +176,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 _endPosition = _startPosition + transform.forward * MaxTravelDistance;
             }
         }
-        
+
         private void UpdateCurrentPositionFromTransform()
         {
             // Update marker positions first
@@ -131,18 +190,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _currentPosition = Vector3.Dot(currentDistance, totalDistance.normalized) / totalDistance.magnitude;
             _currentPosition = Mathf.Clamp01(_currentPosition);
         }
-        
-        private void InitializeHook()
-        {
-            if (!hook || !hook.Joint) return;
-            
-            // Set initial hook position to the anchor level (depth = 0)
-            Vector3 initialTarget = hook.Joint.targetPosition;
-            initialTarget.y = 0f;
-            hook.Joint.targetPosition = initialTarget;
-            _currentHookDepth = 0f;
-        }
-        
+
         private void HandleMovement()
         {
             if (craneSpecification == null) return;
@@ -165,41 +213,13 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 UpdateTransformPosition();
             }
         }
-        
+
         private void UpdateTransformPosition()
         {
             Vector3 targetPosition = Vector3.Lerp(_startPosition, _endPosition, _currentPosition);
             transform.position = targetPosition;
         }
-        
-        public void MoveForward()
-        {
-            _isMovingForward = true;
-            _isMovingBackward = false;
-        }
-        
-        public void MoveBackward()
-        {
-            _isMovingForward = false;
-            _isMovingBackward = true;
-        }
-        
-        public void StopMovement()
-        {
-            _isMovingForward = false;
-            _isMovingBackward = false;
-        }
-        
-        /// <summary>
-        /// Sets trolley position directly (0 = closest to crane base, 1 = farthest)
-        /// </summary>
-        public void SetPosition(float position)
-        {
-            CurrentPosition = position;
-            UpdateMarkerPositions();
-            UpdateTransformPosition();
-        }
-        
+
         private void HandleHookMovement()
         {
             if (!craneSpecification || !hook) return;
@@ -221,7 +241,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 UpdateHookPosition();
             }
         }
-        
+
         private void UpdateHookPosition()
         {
             if (!hook || !hook.Joint) return;
@@ -232,57 +252,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             Vector3 currentTarget = hook.Joint.targetPosition;
             currentTarget.y = -maxDepth * _currentHookDepth;
             hook.Joint.targetPosition = currentTarget;
-        }
-        
-        public void MoveHookDown()
-        {
-            _isHookMovingDown = true;
-            _isHookMovingUp = false;
-        }
-        
-        public void MoveHookUp()
-        {
-            _isHookMovingDown = false;
-            _isHookMovingUp = true;
-        }
-        
-        public void StopHookMovement()
-        {
-            _isHookMovingDown = false;
-            _isHookMovingUp = false;
-        }
-        
-        /// <summary>
-        /// Sets hook depth directly (0 = at anchor level, 1 = max depth)
-        /// </summary>
-        public void SetHookDepth(float depth)
-        {
-            CurrentHookDepth = depth;
-            UpdateHookPosition();
-        }
-        
-        /// <summary>
-        /// Attempts to attach cargo to the hook
-        /// </summary>
-        public bool AttachCargo()
-        {
-            return hook && hook.TryAttachCargo();
-        }
-        
-        /// <summary>
-        /// Detaches cargo from the hook
-        /// </summary>
-        public void DetachCargo()
-        {
-            if (hook) hook.TryDetachCargo();
-        }
-        
-        /// <summary>
-        /// Toggles cargo attachment on the hook
-        /// </summary>
-        public void ToggleCargoAttachment()
-        {
-            if (hook) hook.ToggleCargoAttachment();
         }
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using CodeBase.Services.Input;
+using R3;
 using UnityEngine;
 using VContainer;
 
@@ -19,18 +19,9 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _inputSystemService = inputSystemService;
         }
 
-        private void Awake()
+        private void Start()
         {
             EnableCraneControls();
-        }
-
-        private void Update()
-        {
-            if (!_isControlEnabled || _inputSystemService == null) return;
-            
-            HandleRotationInput();
-            HandleTrolleyInput();
-            HandleHookInput();
         }
 
         public void EnableCraneControls()
@@ -39,6 +30,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             
             _inputSystemService.SwitchToCrane();
             _isControlEnabled = true;
+            
+            SetupReactiveInput();
         }
 
         public void DisableCraneControls()
@@ -49,52 +42,81 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _isControlEnabled = false;
         }
 
-        private void HandleRotationInput()
+        private void SetupReactiveInput()
         {
-            bool turnLeft = _inputSystemService.InputActions.Crane.TurnLeft.IsPressed();
-            bool turnRight = _inputSystemService.InputActions.Crane.TurnRight.IsPressed();
+            var actionMap = _inputSystemService.InputActions.Crane;
             
-            if (turnLeft && !turnRight)
-                rotatingBase.RotateLeft();
-            else if (turnRight && !turnLeft)
-                rotatingBase.RotateRight();
-            else
-                rotatingBase.StopRotation();
-        }
-        
-        private void HandleTrolleyInput()
-        {
-            bool trolleyForward = _inputSystemService.InputActions.Crane.TrolleyForward.IsPressed();
-            bool trolleyBackward = _inputSystemService.InputActions.Crane.TrolleyBackward.IsPressed();
+            // Rotation input with state caching
+            Observable.EveryUpdate()
+                .Where(_ => _isControlEnabled)
+                .Select(_ => (left: actionMap.TurnLeft.IsPressed(), right: actionMap.TurnRight.IsPressed()))
+                .DistinctUntilChanged()
+                .Subscribe(state =>
+                {
+                    switch (state)
+                    {
+                        case { left: true, right: false }:
+                            rotatingBase.RotateLeft();
+                            break;
+                        case { right: true, left: false }:
+                            rotatingBase.RotateRight();
+                            break;
+                        default:
+                            rotatingBase.StopRotation();
+                            break;
+                    }
+                })
+                .AddTo(this);
             
-            if (trolleyForward && !trolleyBackward)
-                trolley.MoveForward();
-            else if (trolleyBackward && !trolleyForward)
-                trolley.MoveBackward();
-            else
-                trolley.StopMovement();
-        }
-        
-        private void HandleHookInput()
-        {
-            bool hookDown = _inputSystemService.InputActions.Crane.HookDown.IsPressed();
-            bool hookUp = _inputSystemService.InputActions.Crane.HookUp.IsPressed();
-            bool attachCargo = _inputSystemService.InputActions.Crane.AttachCargo.WasPressedThisFrame();
+            // Trolley input with state caching
+            Observable.EveryUpdate()
+                .Where(_ => _isControlEnabled)
+                .Select(_ => (forward: actionMap.TrolleyForward.IsPressed(), backward: actionMap.TrolleyBackward.IsPressed()))
+                .DistinctUntilChanged()
+                .Subscribe(state =>
+                {
+                    switch (state)
+                    {
+                        case { forward: true, backward: false }:
+                            trolley.MoveForward();
+                            break;
+                        case { backward: true, forward: false }:
+                            trolley.MoveBackward();
+                            break;
+                        default:
+                            trolley.StopMovement();
+                            break;
+                    }
+                })
+                .AddTo(this);
             
-            if (hookDown && !hookUp)
-                trolley.MoveHookDown();
-            else if (hookUp && !hookDown)
-                trolley.MoveHookUp();
-            else
-                trolley.StopHookMovement();
-                
-            if (attachCargo)
-                trolley.ToggleCargoAttachment();
-        }
-
-        private void OnDestroy()
-        {
-            DisableCraneControls();
+            // Hook movement input with state caching
+            Observable.EveryUpdate()
+                .Where(_ => _isControlEnabled)
+                .Select(_ => (down: actionMap.HookDown.IsPressed(), up: actionMap.HookUp.IsPressed()))
+                .DistinctUntilChanged()
+                .Subscribe(state =>
+                {
+                    switch (state)
+                    {
+                        case { down: true, up: false }:
+                            trolley.MoveHookDown();
+                            break;
+                        case { up: true, down: false }:
+                            trolley.MoveHookUp();
+                            break;
+                        default:
+                            trolley.StopHookMovement();
+                            break;
+                    }
+                })
+                .AddTo(this);
+            
+            // Cargo attachment (discrete action)
+            Observable.EveryUpdate()
+                .Where(_ => _isControlEnabled && actionMap.AttachCargo.WasPressedThisFrame())
+                .Subscribe(_ => trolley.ToggleCargoAttachment())
+                .AddTo(this);
         }
     }
 }

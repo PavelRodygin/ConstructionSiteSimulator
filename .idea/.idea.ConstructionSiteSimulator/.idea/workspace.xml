@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92b8baef-a0c4-443f-a706-4a1db3466d33" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Configs/Cranes/CraneSpecification.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Configs/Cranes/CraneSpecification.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/RotatingBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/RotatingBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,29 +27,38 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1acad9deef3549c4b9617dfa169c66599f7e00/ab/9e9b3ec7/Editor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteModuleController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Cargo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/RotatingBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="32t5gewnh1Mmc1NM1RXNPub2Qep" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\UnityEditors\6000.2.2f1\Editor\Unity.exe" />
@@ -68,10 +86,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24068">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="24068" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -87,7 +105,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758227143137</updated>
-      <workItem from="1758227143211" duration="17889000" />
+      <workItem from="1758227143211" duration="19750000" />
+      <workItem from="1758267923266" duration="53000" />
     </task>
     <servers />
   </component>
@@ -104,5 +123,24 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs</url>
+          <line>28</line>
+          <properties documentPath="D:\Repositories\ConstructionSiteSimulator\Assets\Modules\Base\ConstructionSite\Scripts\Gameplay\Crane\Crane.cs" containingFunctionPresentation="Method 'EnableCraneControls'">
+            <startOffsets>
+              <option value="731" />
+            </startOffsets>
+            <endOffsets>
+              <option value="763" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
