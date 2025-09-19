@@ -5,7 +5,7 @@ using CodeBase.Services.Input;
 using Cysharp.Threading.Tasks;
 using R3;
 
-namespace Modules.Base.ThirdPersonMPModule.Scripts
+namespace Modules.Base.ConstructionSite.Scripts
 {
     /// <summary>
         /// Main controller for ThirdPersonMP module that manages the module lifecycle

@@ -12,6 +12,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         private float _currentCargoWeight;
         private bool _isRotatingLeft;
         private bool _isRotatingRight;
+        private float _currentRotationSpeed;
+        private float _targetRotationSpeed;
         
         /// <summary>
         /// Current rotation angle relative to the main crane support in degrees
@@ -22,24 +24,17 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             private set => _currentRotationAngle = NormalizeAngle(value);
         }
         
-        /// <summary>
-        /// Current cargo weight that affects rotation speed (in kg)
-        /// </summary>
         public float CurrentCargoWeight 
         { 
             get => _currentCargoWeight;
             set => _currentCargoWeight = Mathf.Max(0f, value);
         }
         
-        /// <summary>
-        /// Rated crane capacity in kg (10 tons)
-        /// </summary>
         public float RatedCargoWeight => craneSpecification.RatedCargoWeight;
         
-        /// <summary>
-        /// Maximum crane load in kg (40 tons)
-        /// </summary>
         public float MaxCargoWeight => craneSpecification.MaxCargoWeight;
+        
+        public float CurrentRotationSpeed => _currentRotationSpeed;
         
         private void Update()
         {
@@ -55,15 +50,47 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private void HandleRotation()
         {
+            UpdateTargetRotationSpeed();
+            UpdateCurrentRotationSpeed();
+            ApplyRotation();
+        }
+        
+        private void UpdateTargetRotationSpeed()
+        {
             if (_isRotatingLeft)
             {
-                float rotationAmount = GetAdjustedRotationSpeed() * Time.deltaTime;
-                CurrentRotationAngle -= rotationAmount;
-                transform.Rotate(0f, -rotationAmount, 0f);
+                _targetRotationSpeed = -GetAdjustedRotationSpeed();
             }
             else if (_isRotatingRight)
             {
-                float rotationAmount = GetAdjustedRotationSpeed() * Time.deltaTime;
+                _targetRotationSpeed = GetAdjustedRotationSpeed();
+            }
+            else
+            {
+                _targetRotationSpeed = 0f;
+            }
+        }
+        
+        private void UpdateCurrentRotationSpeed()
+        {
+            if (!craneSpecification) return;
+            
+            float acceleration = _targetRotationSpeed == 0f ? 
+                craneSpecification.RotationDeceleration : 
+                craneSpecification.RotationAcceleration;
+            
+            _currentRotationSpeed = Mathf.MoveTowards(
+                _currentRotationSpeed, 
+                _targetRotationSpeed, 
+                acceleration * Time.deltaTime
+            );
+        }
+        
+        private void ApplyRotation()
+        {
+            if (Mathf.Abs(_currentRotationSpeed) > 0.001f)
+            {
+                float rotationAmount = _currentRotationSpeed * Time.deltaTime;
                 CurrentRotationAngle += rotationAmount;
                 transform.Rotate(0f, rotationAmount, 0f);
             }

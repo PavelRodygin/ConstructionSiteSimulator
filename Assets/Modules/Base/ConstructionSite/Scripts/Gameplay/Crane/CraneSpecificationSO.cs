@@ -8,6 +8,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [Header("Rotation Settings")]
         [field: SerializeField] public float BaseRotationSpeed { get; private set; } = 30f; // degrees per second
         [field: SerializeField] public float MinRotationSpeed { get; private set; } = 10f;
+        [field: SerializeField] public float RotationAcceleration { get; private set; } = 60f; // degrees per second squared
+        [field: SerializeField] public float RotationDeceleration { get; private set; } = 90f; // degrees per second squared
         
         [Header("Load Capacity")]
         [field: SerializeField] public float RatedCargoWeight { get; private set; } = 10000f;

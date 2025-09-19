@@ -1,6 +1,6 @@
 using CodeBase.Core.Patterns.Architecture.MVP;
 
-namespace Modules.Base.ThirdPersonMPModule.Scripts
+namespace Modules.Base.ConstructionSite.Scripts
 {
     /// <summary>
     /// Model for ThirdPersonMP module that contains business logic and data

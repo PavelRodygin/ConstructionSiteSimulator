@@ -87,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758227143137</updated>
-      <workItem from="1758227143211" duration="15619000" />
+      <workItem from="1758227143211" duration="17889000" />
     </task>
     <servers />
   </component>
@@ -104,24 +104,5 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs</url>
-          <line>28</line>
-          <properties documentPath="D:\Repositories\ConstructionSiteSimulator\Assets\Modules\Base\ConstructionSite\Scripts\Gameplay\Crane\Crane.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="723" />
-            </startOffsets>
-            <endOffsets>
-              <option value="777" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

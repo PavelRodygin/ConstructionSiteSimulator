@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Modules.Base.ThirdPersonMPModule.Scripts.Gameplay;
 using UnityEngine;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane

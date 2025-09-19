@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unit = R3.Unit;
 
-namespace Modules.Base.ThirdPersonMPModule.Scripts
+namespace Modules.Base.ConstructionSite.Scripts
 {
     public readonly struct ConstructionSiteCommands
     {

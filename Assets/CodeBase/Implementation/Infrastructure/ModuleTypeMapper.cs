@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using CodeBase.Core.Infrastructure;
 using CodeBase.Core.Infrastructure.Modules;
 using Modules.Base.Bootstrap.Scripts;
+using Modules.Base.ConstructionSite.Scripts;
 using Modules.Base.MainMenu.Scripts;
-using Modules.Base.ThirdPersonMPModule.Scripts;
 using VContainer;
 
 namespace CodeBase.Implementation.Infrastructure

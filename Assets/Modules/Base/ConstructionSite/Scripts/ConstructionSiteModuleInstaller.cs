@@ -4,7 +4,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Modules.Base.ThirdPersonMPModule.Scripts
+namespace Modules.Base.ConstructionSite.Scripts
 {
     /// <summary>
     /// Installer for ThirdPersonMP module that registers all dependencies

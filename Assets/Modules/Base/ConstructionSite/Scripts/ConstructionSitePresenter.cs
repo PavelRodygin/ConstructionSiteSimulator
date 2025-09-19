@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 using R3;
 using Unit = R3.Unit;
 
-namespace Modules.Base.ThirdPersonMPModule.Scripts
+namespace Modules.Base.ConstructionSite.Scripts
 {
     /// <summary>
     /// Presenter for ThirdPersonMP module that handles business logic and coordinates between Model and View

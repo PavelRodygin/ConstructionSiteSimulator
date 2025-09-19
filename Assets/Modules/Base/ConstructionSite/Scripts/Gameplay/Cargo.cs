@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Modules.Base.ThirdPersonMPModule.Scripts.Gameplay
+namespace Modules.Base.ConstructionSite.Scripts.Gameplay
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class Cargo : MonoBehaviour
     {
-        [Header("Cargo Configuration")]
         [SerializeField] private Transform attachPoint;
         [SerializeField] private bool isAttachable = true;
 
