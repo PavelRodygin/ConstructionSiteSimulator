@@ -1,26 +1,15 @@
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using CodeBase.Core.Infrastructure;
 using CodeBase.Core.Systems;
 using CodeBase.Core.Systems.PopupHub;
 using Cysharp.Threading.Tasks;
 using MediatR;
 using R3;
-using UnityEngine;
 using VContainer;
 using Unit = R3.Unit;
 
 namespace Modules.Base.MainMenu.Scripts
 {
-    public class MainMenuRequest : IRequest<string> { }
-
-    public class MainMenuHandler : IRequestHandler<MainMenuRequest, string>
-    {
-        public Task<string> Handle(MainMenuRequest request, CancellationToken cancellationToken) => 
-            Task.FromResult("MainMenu Handler Invoked!");
-    }
-    
     public class MainMenuPresenter : IDisposable
     {
         [Inject] private IMediator _mediator;
@@ -82,9 +71,6 @@ namespace Modules.Base.MainMenu.Scripts
 
             _mainMenuView.InitializeSoundToggle(isMusicOn: _audioSystem.MusicVolume != 0);
             await _mainMenuView.Show();
-            
-            var result = await _mediator.Send(new MainMenuRequest()); 
-            Debug.Log($"MediatR request result: {result}");
             
             _audioSystem.PlayMainMenuMelody();
         }

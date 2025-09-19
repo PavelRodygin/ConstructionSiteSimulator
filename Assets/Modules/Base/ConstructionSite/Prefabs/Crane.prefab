@@ -1667,48 +1667,16 @@ PrefabInstance:
       value: CraneHook
       objectReference: {fileID: 0}
     - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_Axis.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_Axis.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_Axis.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_ConnectedBody
       value: 
       objectReference: {fileID: 3101758222906683774}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_SecondaryAxis.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_SecondaryAxis.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_SecondaryAxis.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_YDrive.positionDamper
-      value: 2500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_YDrive.positionSpring
-      value: 5000
-      objectReference: {fileID: 0}
     - target: {fileID: 4518234663677938600, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4518234663677938600, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.25
+      value: 29.5
       objectReference: {fileID: 0}
     - target: {fileID: 4518234663677938600, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1741,10 +1709,6 @@ PrefabInstance:
     - target: {fileID: 4518234663677938600, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934310717036975564, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

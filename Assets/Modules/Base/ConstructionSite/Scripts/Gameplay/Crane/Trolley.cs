@@ -128,35 +128,23 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _isHookMovingDown = false;
             _isHookMovingUp = false;
         }
-
-        /// <summary>
-        /// Sets hook depth directly (0 = at anchor level, 1 = max depth)
-        /// </summary>
+        
         public void SetHookDepth(float depth)
         {
             CurrentHookDepth = depth;
             UpdateHookPosition();
         }
-
-        /// <summary>
-        /// Attempts to attach cargo to the hook
-        /// </summary>
+        
         public bool AttachCargo()
         {
             return hook && hook.TryAttachCargo();
         }
-
-        /// <summary>
-        /// Detaches cargo from the hook
-        /// </summary>
+        
         public void DetachCargo()
         {
             if (hook) hook.TryDetachCargo();
         }
-
-        /// <summary>
-        /// Toggles cargo attachment on the hook
-        /// </summary>
+        
         public void ToggleCargoAttachment()
         {
             if (hook) hook.ToggleCargoAttachment();
@@ -179,7 +167,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void UpdateCurrentPositionFromTransform()
         {
-            // Update marker positions first
             UpdateMarkerPositions();
             
             Vector3 totalDistance = _endPosition - _startPosition;

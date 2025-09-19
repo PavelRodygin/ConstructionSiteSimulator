@@ -26,9 +26,7 @@ namespace CodeBase.Implementation.UI.Widgets.ProgressBars
                 progressValueText.text = $"{percentage}%";
             }
             else
-            {
                 Debug.LogWarning("[UniversalProgressBar] progressValueText is null! Check Unity Inspector assignment.");
-            }
         }
         
         protected override float GetCurrentProgress() => _currentProgress;
