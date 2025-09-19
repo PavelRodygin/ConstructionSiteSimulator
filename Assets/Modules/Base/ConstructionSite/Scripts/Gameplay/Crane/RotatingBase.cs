@@ -6,6 +6,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
     {
         [Header("Configuration")]
         [SerializeField] private CraneSpecificationSO craneSpecification;
+        [SerializeField] private Trolley trolley;
         
         private float _currentRotationAngle;
         private float _currentCargoWeight;
@@ -42,7 +43,14 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private void Update()
         {
+            UpdateCargoWeight();
             HandleRotation();
+        }
+        
+        private void UpdateCargoWeight()
+        {
+            // Automatically update cargo weight from trolley's hook
+            if (trolley) CurrentCargoWeight = trolley.CurrentHookLoad;
         }
         
         private void HandleRotation()
@@ -63,7 +71,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private float GetAdjustedRotationSpeed()
         {
-            if (craneSpecification == null) return 0f;
+            if (!craneSpecification) return 0f;
             
             // No speed reduction up to rated capacity (10 tons)
             if (_currentCargoWeight <= craneSpecification.RatedCargoWeight)

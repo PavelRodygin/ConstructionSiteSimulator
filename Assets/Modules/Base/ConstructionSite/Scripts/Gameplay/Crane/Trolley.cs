@@ -14,13 +14,13 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [Header("Movement Constraints")]
         [SerializeField] private Transform minPositionMarker;
         [SerializeField] private Transform maxPositionMarker;
-        
+
+        private Vector3 _startPosition;
+        private Vector3 _endPosition;
         private float _currentPosition; // [0; 1;]
         private bool _isMovingForward;
         private bool _isMovingBackward;
-        private Vector3 _startPosition;
-        private Vector3 _endPosition;
-        
+
         private float _currentHookDepth; //[0; 1;]
         private bool _isHookMovingDown;
         private bool _isHookMovingUp;
@@ -43,14 +43,12 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             private set => _currentHookDepth = Mathf.Clamp01(value);
         }
         
-        /// <summary>
-        /// Current hook position relative to cable anchor
-        /// </summary>
         public Vector3 HookPositionRelativeToAnchor
         {
             get
             {
                 if (!hook || !cableAnchor) return Vector3.zero;
+                
                 return hook.transform.position - cableAnchor.position;
             }
         }
@@ -66,6 +64,21 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 return hook.Joint.targetPosition;
             }
         }
+        
+        /// <summary>
+        /// Current load on the hook in kg
+        /// </summary>
+        public float CurrentHookLoad => hook ? hook.CurrentLoadKg : 0f;
+        
+        /// <summary>
+        /// Current load on the hook joint in Newtons
+        /// </summary>
+        public float CurrentHookLoadNewtons => hook ? hook.CurrentLoad : 0f;
+        
+        /// <summary>
+        /// Whether the hook has cargo attached
+        /// </summary>
+        public bool HasCargoAttached => hook && hook.HasCargoAttached;
         
         /// <summary>
         /// Maximum trolley travel distance
@@ -178,7 +191,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         }
         
         /// <summary>
-        /// Sets trolley position directly (0 = closest to base, 1 = farthest)
+        /// Sets trolley position directly (0 = closest to crane base, 1 = farthest)
         /// </summary>
         public void SetPosition(float position)
         {
@@ -246,6 +259,30 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         {
             CurrentHookDepth = depth;
             UpdateHookPosition();
+        }
+        
+        /// <summary>
+        /// Attempts to attach cargo to the hook
+        /// </summary>
+        public bool AttachCargo()
+        {
+            return hook && hook.AttachCargo();
+        }
+        
+        /// <summary>
+        /// Detaches cargo from the hook
+        /// </summary>
+        public void DetachCargo()
+        {
+            if (hook) hook.TryDetachCargo();
+        }
+        
+        /// <summary>
+        /// Toggles cargo attachment on the hook
+        /// </summary>
+        public void ToggleCargoAttachment()
+        {
+            if (hook) hook.ToggleCargoAttachment();
         }
     }
 }

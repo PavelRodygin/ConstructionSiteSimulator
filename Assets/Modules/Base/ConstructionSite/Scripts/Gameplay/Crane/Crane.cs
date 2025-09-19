@@ -79,6 +79,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         {
             bool hookDown = _inputSystemService.InputActions.Crane.HookDown.IsPressed();
             bool hookUp = _inputSystemService.InputActions.Crane.HookUp.IsPressed();
+            bool attachCargo = _inputSystemService.InputActions.Crane.AttachCargo.WasPressedThisFrame();
             
             if (hookDown && !hookUp)
                 trolley.MoveHookDown();
@@ -86,6 +87,9 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 trolley.MoveHookUp();
             else
                 trolley.StopHookMovement();
+                
+            if (attachCargo)
+                trolley.ToggleCargoAttachment();
         }
 
         private void OnDestroy()
