@@ -2,7 +2,7 @@
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 {
-    public class RotatingBase : MonoBehaviour
+    public class Turntable : MonoBehaviour
     {
         [Header("Configuration")]
         [SerializeField] private CraneSpecificationSO craneSpecification;

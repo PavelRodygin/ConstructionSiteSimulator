@@ -1291,6 +1291,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9106105595411967268, guid: 24d7ce5de60e4b34fb73c1a2e98f6317, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.0515747
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2734,30 +2738,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3153217978534531013, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_ProbeAnchor
-      value: 
-      objectReference: {fileID: 53103663547600241}
-    - target: {fileID: 3419258346307389304, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_ProbeAnchor
-      value: 
-      objectReference: {fileID: 53103663547600241}
+    - target: {fileID: 3140627149984802839, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.648
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140627149984802839, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.537
+      objectReference: {fileID: 0}
     - target: {fileID: 5182553613729520227, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
       propertyPath: m_Name
       value: Crane
       objectReference: {fileID: 0}
-    - target: {fileID: 5186456095486195964, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_ProbeAnchor
-      value: 
-      objectReference: {fileID: 53103663547600241}
-    - target: {fileID: 6096089088497506867, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_ProbeAnchor
-      value: 
-      objectReference: {fileID: 53103663547600241}
-    - target: {fileID: 8160206515226335669, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_ProbeAnchor
-      value: 
-      objectReference: {fileID: 53103663547600241}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

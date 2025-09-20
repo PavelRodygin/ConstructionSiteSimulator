@@ -1,0 +1,18 @@
+{
+	"nodes":[
+		{"id":"c3911d190b4fbbc0","type":"text","text":"**Crane**\n\n---\n- DI\n- Input\n- Player Interaction","x":-713,"y":-680,"width":250,"height":220},
+		{"id":"ec92647c522a6013","type":"text","text":"**DashboardView**\n\n---\n- Presents Data from crane modules\n- ---\n- Local azimuth data ","x":-300,"y":-710,"width":220,"height":280},
+		{"id":"49c327ea2f4e84aa","x":-1386,"y":-170,"width":181,"height":400,"type":"file","file":"Pasted image 20250920160703.png"},
+		{"id":"be42972cfe74d676","type":"text","text":"**Naming References**","x":-1420,"y":-360,"width":250,"height":70},
+		{"id":"395591fec7a372a6","type":"text","text":"**Hook**\n\n---\n- Crane Y Rotation\n- ReactiveProperty \n- ---\n- Local azimuth data ","x":-698,"y":0,"width":220,"height":280},
+		{"id":"1f540bde9024046f","type":"text","text":"**Trolley**\n\n---\n- Hook & self Z movement \n- Hook Y movement\n- ---\n- Self position relative to tower\n- Hook Heights","x":-737,"y":-380,"width":298,"height":300},
+		{"id":"f319cbf2e5b82a3d","type":"text","text":"**Turntable**\n\n---\n- Crane Y Rotation\n- ReactiveProperty \n- ---\n- Local azimuth data ","x":-1000,"y":-380,"width":220,"height":280}
+	],
+	"edges":[
+		{"id":"66a262f355e18ea7","fromNode":"c3911d190b4fbbc0","fromSide":"left","toNode":"f319cbf2e5b82a3d","toSide":"top"},
+		{"id":"e6985710f1310db0","fromNode":"c3911d190b4fbbc0","fromSide":"bottom","toNode":"1f540bde9024046f","toSide":"top"},
+		{"id":"8484bbb461333291","fromNode":"1f540bde9024046f","fromSide":"bottom","toNode":"395591fec7a372a6","toSide":"top"},
+		{"id":"40b1cd53d49df729","fromNode":"c3911d190b4fbbc0","fromSide":"right","toNode":"ec92647c522a6013","toSide":"left"},
+		{"id":"44b906181330df55","fromNode":"be42972cfe74d676","fromSide":"bottom","toNode":"49c327ea2f4e84aa","toSide":"top"}
+	]
+}

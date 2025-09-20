@@ -11,11 +11,11 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [SerializeField] private Transform cableAnchor;
         
         [Header("Movement Constraints")]
-        [SerializeField] private Transform minPositionMarker;
-        [SerializeField] private Transform maxPositionMarker;
+        [SerializeField] private Transform mastTowerBorderPoint;
+        [SerializeField] private Transform jibEndBorderPoint;
 
         private Vector3 _localStartPosition;
-        private Vector3 _localEndPosition;
+        private Vector3 _localEndPosition;  
         private float _currentPosition; // [0; 1]
         private bool _isMovingForward;
         private bool _isMovingBackward;
@@ -128,10 +128,10 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void UpdateLocalMarkerPositions()
         {
-            if (minPositionMarker && maxPositionMarker && transform.parent)
+            if (mastTowerBorderPoint && jibEndBorderPoint && transform.parent)
             {
-                _localStartPosition = transform.parent.InverseTransformPoint(minPositionMarker.position);
-                _localEndPosition = transform.parent.InverseTransformPoint(maxPositionMarker.position);
+                _localStartPosition = transform.parent.InverseTransformPoint(mastTowerBorderPoint.position);
+                _localEndPosition = transform.parent.InverseTransformPoint(jibEndBorderPoint.position);
             }
             else
             {

@@ -8,15 +8,18 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 {
     public class Crane : MonoBehaviour
     {
-        [SerializeField] private RotatingBase rotatingBase;
+        [SerializeField] private Turntable turntable;
         [SerializeField] private Trolley trolley;
+        [SerializeField] private CraneDashboard craneDashboard;
         
         private InputSystemService _inputSystemService;
-        private bool _isControlEnabled = false;
+        private Camera _moduleCamera;
+        
+        private bool _isControlEnabled;
         private readonly CompositeDisposable _inputDisposables = new();
         
         [Inject]
-        private void Construct(InputSystemService inputSystemService)
+        private void Construct(InputSystemService inputSystemService, Camera moduleCamera)
         {
             _inputSystemService = inputSystemService;
             
@@ -77,13 +80,13 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                     switch (state)
                     {
                         case { left: true, right: false }:
-                            rotatingBase.RotateLeft();
+                            turntable.RotateLeft();
                             break;
                         case { right: true, left: false }:
-                            rotatingBase.RotateRight();
+                            turntable.RotateRight();
                             break;
                         default:
-                            rotatingBase.StopRotation();
+                            turntable.StopRotation();
                             break;
                     }
                 })
