@@ -124,10 +124,10 @@ namespace Modules.Template.TemplateModule.Scripts
 
         private void ValidateUIElements()
         {
-            if (exitButton == null) Debug.LogError($"{nameof(exitButton)} is not assigned in {nameof(TemplateView)}");
-            if (settingsPopupButton == null) Debug.LogError($"{nameof(settingsPopupButton)} is not assigned in {nameof(TemplateView)}");
-            if (musicToggle == null) Debug.LogError($"{nameof(musicToggle)} is not assigned in {nameof(TemplateView)}");
-            if (screenTitle == null) Debug.LogError($"{nameof(screenTitle)} is not assigned in {nameof(TemplateView)}");
+            if (!exitButton) Debug.LogError($"{nameof(exitButton)} is not assigned in {nameof(TemplateView)}");
+            if (!settingsPopupButton) Debug.LogError($"{nameof(settingsPopupButton)} is not assigned in {nameof(TemplateView)}");
+            if (!musicToggle) Debug.LogError($"{nameof(musicToggle)} is not assigned in {nameof(TemplateView)}");
+            if (!screenTitle) Debug.LogError($"{nameof(screenTitle)} is not assigned in {nameof(TemplateView)}");
         }
     }
 }

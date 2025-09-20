@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 8340094238740093689}
   - component: {fileID: 2936050483271137991}
   m_Layer: 5
-  m_Name: LoadValueText
+  m_Name: PositionValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 8
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 9.35
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16554ae7bfb44accacee36df5808bb55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views.TrolleyGaugeView
-  loadValueText: {fileID: 2936050483271137991}
+  positionValueText: {fileID: 2936050483271137991}
   forwardIndicatorImage: {fileID: 1813623391786118917}
   backwardIndicatorImage: {fileID: 3183463301148779435}
+  trolley: {fileID: 0}

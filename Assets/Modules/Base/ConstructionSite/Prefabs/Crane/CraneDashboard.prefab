@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.CraneDashboard
   worldSpaceCanvas: {fileID: 3829567285209824210}
-  <CraneDashboardView>k__BackingField: {fileID: 0}
+  <CraneDashboardView>k__BackingField: {fileID: 1666871965008270963}
 --- !u!1001 &6471906575729300241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,6 +269,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9137049144420222489}
     m_Modifications:
+    - target: {fileID: 733728789643102552, guid: 2734311874fc8244fad98045821d5b0d, type: 3}
+      propertyPath: m_fontSize
+      value: 6.15
+      objectReference: {fileID: 0}
     - target: {fileID: 782770791804676073, guid: 2734311874fc8244fad98045821d5b0d, type: 3}
       propertyPath: m_fontSize
       value: 8
@@ -386,6 +390,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2734311874fc8244fad98045821d5b0d, type: 3}
+--- !u!114 &1666871965008270963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5688397645643253090, guid: 2734311874fc8244fad98045821d5b0d, type: 3}
+  m_PrefabInstance: {fileID: 6471906575729300241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0324834f319b4a7395369199bb004f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views.CraneDashboardView
 --- !u!224 &4066966901402001721 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7034640643637539368, guid: 2734311874fc8244fad98045821d5b0d, type: 3}

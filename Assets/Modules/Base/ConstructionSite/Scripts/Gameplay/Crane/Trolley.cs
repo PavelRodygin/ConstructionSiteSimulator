@@ -1,3 +1,4 @@
+using R3;
 using UnityEngine;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
@@ -16,6 +17,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private Vector3 _localStartPosition;
         private Vector3 _localEndPosition;  
+        private float _maxTravelDistance;
         private float _currentPosition; // [0; 1]
         private bool _isMovingForward;
         private bool _isMovingBackward;
@@ -23,6 +25,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         private float _currentHookDepth; // [0; 1]
         private bool _isHookMovingDown;
         private bool _isHookMovingUp;
+        
+        public ReactiveProperty<float> RelativeZPosition { get; private set; } = new(0f);
         
         public float CurrentPosition 
         { 
@@ -60,13 +64,13 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         public bool HasCargoAttached => hook && hook.HasCargoAttached;
         
-        public float MaxTravelDistance => craneSpecification != null ? craneSpecification.TrolleyMaxDistance : 20f;
-        
         private void Start()
         {
-            UpdateLocalMarkerPositions();
+            SetupLocalMarkerPositions();
             UpdateCurrentPositionFromTransform();
             InitializeHook();
+            
+            RelativeZPosition.Value = _currentPosition * _maxTravelDistance;
         }
         
         private void Update()
@@ -126,7 +130,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             if (hook) hook.ToggleCargoAttachment();
         }
 
-        private void UpdateLocalMarkerPositions()
+        private void SetupLocalMarkerPositions()
         {
             if (mastTowerBorderPoint && jibEndBorderPoint && transform.parent)
             {
@@ -135,15 +139,20 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             }
             else
             {
+                // Fallback: from 0 to 30m
                 _localStartPosition = Vector3.zero;
-                _localEndPosition = new Vector3(0, 0, MaxTravelDistance);
+                _localEndPosition = new Vector3(0, 0, 30f);
+            }
+            
+            _maxTravelDistance = Vector3.Distance(_localStartPosition, _localEndPosition);
+            if (_maxTravelDistance < 0.01f)
+            {
+                _maxTravelDistance = 30f; // protection for zero distance
             }
         }
 
         private void UpdateCurrentPositionFromTransform()
         {
-            UpdateLocalMarkerPositions();
-            
             if (transform.parent == null) return;
             
             Vector3 localPos = transform.localPosition;
@@ -160,24 +169,30 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void HandleMovement()
         {
-            if (!craneSpecification || transform.parent == null) return;
-            
-            UpdateLocalMarkerPositions();
+            if (!craneSpecification || !transform.parent) return;
             
             float moveSpeed = craneSpecification.TrolleyMoveSpeed;
             float deltaTime = Time.deltaTime;
-            float normalizedSpeed = moveSpeed * deltaTime / MaxTravelDistance;
+            float normalizedSpeed = moveSpeed * deltaTime / _maxTravelDistance;
+            
+            bool positionChanged = false;
             
             if (_isMovingForward && _currentPosition < 1f)
             {
                 CurrentPosition += normalizedSpeed;
                 UpdateTransformLocalPosition();
+                positionChanged = true;
             }
             else if (_isMovingBackward && _currentPosition > 0f)
             {
                 CurrentPosition -= normalizedSpeed;
                 UpdateTransformLocalPosition();
+                positionChanged = true;
             }
+            
+            // Updating reactive property only when position actually changes
+            if (positionChanged) 
+                RelativeZPosition.Value = _currentPosition * _maxTravelDistance;
         }
 
         private void UpdateTransformLocalPosition()
