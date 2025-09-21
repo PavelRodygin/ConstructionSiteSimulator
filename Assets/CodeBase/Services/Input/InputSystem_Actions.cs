@@ -1458,6 +1458,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TurntableRotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""6a8bdf24-74e9-4233-b440-3b63694534bb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1570,6 +1579,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""AttachCargo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""e013cd5a-71fe-44df-9544-67102210f7cc"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurntableRotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f45c8768-f29f-4c3d-8664-c82d9504defe"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""TurntableRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4968781b-37a9-4b10-bc2e-bf4c2bfa6925"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""TurntableRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -1677,6 +1719,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Crane_HookDown = m_Crane.FindAction("HookDown", throwIfNotFound: true);
         m_Crane_HookUp = m_Crane.FindAction("HookUp", throwIfNotFound: true);
         m_Crane_AttachCargo = m_Crane.FindAction("AttachCargo", throwIfNotFound: true);
+        m_Crane_TurntableRotate = m_Crane.FindAction("TurntableRotate", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -2223,6 +2266,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Crane_HookDown;
     private readonly InputAction m_Crane_HookUp;
     private readonly InputAction m_Crane_AttachCargo;
+    private readonly InputAction m_Crane_TurntableRotate;
     /// <summary>
     /// Provides access to input actions defined in input action map "Crane".
     /// </summary>
@@ -2266,6 +2310,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Crane/AttachCargo".
         /// </summary>
         public InputAction @AttachCargo => m_Wrapper.m_Crane_AttachCargo;
+        /// <summary>
+        /// Provides access to the underlying input action "Crane/TurntableRotate".
+        /// </summary>
+        public InputAction @TurntableRotate => m_Wrapper.m_Crane_TurntableRotate;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -2316,6 +2364,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @AttachCargo.started += instance.OnAttachCargo;
             @AttachCargo.performed += instance.OnAttachCargo;
             @AttachCargo.canceled += instance.OnAttachCargo;
+            @TurntableRotate.started += instance.OnTurntableRotate;
+            @TurntableRotate.performed += instance.OnTurntableRotate;
+            @TurntableRotate.canceled += instance.OnTurntableRotate;
         }
 
         /// <summary>
@@ -2351,6 +2402,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @AttachCargo.started -= instance.OnAttachCargo;
             @AttachCargo.performed -= instance.OnAttachCargo;
             @AttachCargo.canceled -= instance.OnAttachCargo;
+            @TurntableRotate.started -= instance.OnTurntableRotate;
+            @TurntableRotate.performed -= instance.OnTurntableRotate;
+            @TurntableRotate.canceled -= instance.OnTurntableRotate;
         }
 
         /// <summary>
@@ -2710,5 +2764,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttachCargo(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TurntableRotate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTurntableRotate(InputAction.CallbackContext context);
     }
 }

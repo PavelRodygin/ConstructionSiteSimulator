@@ -12,7 +12,6 @@ namespace Modules.Base.MainMenu.Scripts
 {
     public class MainMenuPresenter : IDisposable
     {
-        [Inject] private IMediator _mediator;
         private readonly MainMenuModuleModel _mainMenuModuleModel;
         private readonly MainMenuView _mainMenuView;
         private readonly IPopupHub _popupHub;

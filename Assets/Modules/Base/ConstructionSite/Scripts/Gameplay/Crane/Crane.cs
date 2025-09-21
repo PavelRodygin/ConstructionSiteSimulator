@@ -22,21 +22,12 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         private void Construct(InputSystemService inputSystemService, Camera moduleCamera)
         {
             _inputSystemService = inputSystemService;
-            
-            // Initialize controls after injection if the object is already active
-            if (gameObject.activeInHierarchy && enabled)
-            {
-                EnableCraneControls();
-            }
+            // craneDashboard.Initialize();
         }
 
         private void Start()
         {
-            // Only enable if not already enabled in Construct
-            if (_inputSystemService != null && !_isControlEnabled)
-            {
-                EnableCraneControls();
-            }
+            if (_inputSystemService != null && !_isControlEnabled) EnableCraneControls();
         }
 
         public void EnableCraneControls()
@@ -47,7 +38,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 return;
             }
             
-            if (_isControlEnabled) return; // Already enabled
+            if (_isControlEnabled) return;
             
             _inputSystemService.SwitchToCrane();
             _isControlEnabled = true;
@@ -62,37 +53,35 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _inputSystemService.SwitchToUI();
             _isControlEnabled = false;
             
-            // Dispose all input subscriptions
             _inputDisposables.Clear();
+            
+            turntable.StopRotation();
+            trolley.StopMovement();
+            trolley.StopHookMovement();
         }
 
         private void SetupReactiveInput()
         {
             var actionMap = _inputSystemService.InputActions.Crane;
             
-            // Rotation input with state caching
             Observable.EveryUpdate()
                 .Where(_ => _isControlEnabled)
-                .Select(_ => (left: actionMap.TurnLeft.IsPressed(), right: actionMap.TurnRight.IsPressed()))
+                .Select(_ => actionMap.TurntableRotate.ReadValue<Vector2>())
                 .DistinctUntilChanged()
-                .Subscribe(state =>
+                .Subscribe(value =>
                 {
-                    switch (state)
+                    if (Mathf.Abs(value.x) > 0.1f) // Threshold для jitter
                     {
-                        case { left: true, right: false }:
-                            turntable.RotateLeft();
-                            break;
-                        case { right: true, left: false }:
-                            turntable.RotateRight();
-                            break;
-                        default:
-                            turntable.StopRotation();
-                            break;
+                        turntable.Rotate(value.x);
+                    }
+                    else
+                    {
+                        turntable.Rotate(0f);
                     }
                 })
                 .AddTo(_inputDisposables);
             
-            // Trolley input with state caching
+            // Trolley movement: Polling states (forward/backward)
             Observable.EveryUpdate()
                 .Where(_ => _isControlEnabled)
                 .Select(_ => (forward: actionMap.TrolleyForward.IsPressed(), backward: actionMap.TrolleyBackward.IsPressed()))
@@ -114,20 +103,20 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 })
                 .AddTo(_inputDisposables);
             
-            // Hook movement input with state caching
+            // Hook movement: Polling states (up/down)
             Observable.EveryUpdate()
                 .Where(_ => _isControlEnabled)
-                .Select(_ => (down: actionMap.HookDown.IsPressed(), up: actionMap.HookUp.IsPressed()))
+                .Select(_ => (up: actionMap.HookUp.IsPressed(), down: actionMap.HookDown.IsPressed()))
                 .DistinctUntilChanged()
                 .Subscribe(state =>
                 {
                     switch (state)
                     {
-                        case { down: true, up: false }:
-                            trolley.MoveHookDown();
-                            break;
                         case { up: true, down: false }:
                             trolley.MoveHookUp();
+                            break;
+                        case { down: true, up: false }:
+                            trolley.MoveHookDown();
                             break;
                         default:
                             trolley.StopHookMovement();
@@ -136,7 +125,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 })
                 .AddTo(_inputDisposables);
             
-            // Cargo attachment (discrete action)
+            // Cargo attachment (discrete action, event-driven)
             _inputSystemService.GetPerformedObservable(actionMap.AttachCargo)
                 .Where(_ => _isControlEnabled)
                 .ThrottleFirst(TimeSpan.FromMilliseconds(200))

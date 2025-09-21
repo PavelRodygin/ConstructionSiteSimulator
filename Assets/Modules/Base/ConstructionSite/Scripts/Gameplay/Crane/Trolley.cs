@@ -19,12 +19,10 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         private Vector3 _localEndPosition;  
         private float _maxTravelDistance;
         private float _currentPosition; // [0; 1]
-        private bool _isMovingForward;
-        private bool _isMovingBackward;
+        private float _movementDirection; // -1 backward, 0 stop, 1 forward
 
         private float _currentHookDepth; // [0; 1]
-        private bool _isHookMovingDown;
-        private bool _isHookMovingUp;
+        private float _hookDirection; // -1 up, 0 stop, 1 down
         
         public ReactiveProperty<float> RelativeZPosition { get; private set; } = new(0f);
         
@@ -73,7 +71,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             RelativeZPosition.Value = _currentPosition * _maxTravelDistance;
         }
         
-        private void Update()
+        private void FixedUpdate()
         {
             HandleMovement();
             HandleHookMovement();
@@ -89,46 +87,19 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _currentHookDepth = 0f;
         }
 
-        public void MoveForward()
-        {
-            _isMovingForward = true;
-            _isMovingBackward = false;
-        }
+        public void MoveForward() => _movementDirection = 1f;
 
-        public void MoveBackward()
-        {
-            _isMovingForward = false;
-            _isMovingBackward = true;
-        }
+        public void MoveBackward() => _movementDirection = -1f;
 
-        public void StopMovement()
-        {
-            _isMovingForward = false;
-            _isMovingBackward = false;
-        }
+        public void StopMovement() => _movementDirection = 0f;
 
-        public void MoveHookDown()
-        {
-            _isHookMovingDown = true;
-            _isHookMovingUp = false;
-        }
+        public void MoveHookDown() => _hookDirection = 1f;
 
-        public void MoveHookUp()
-        {
-            _isHookMovingDown = false;
-            _isHookMovingUp = true;
-        }
+        public void MoveHookUp() => _hookDirection = -1f;
 
-        public void StopHookMovement()
-        {
-            _isHookMovingDown = false;
-            _isHookMovingUp = false;
-        }
-        
-        public void ToggleCargoAttachment()
-        {
-            if (hook) hook.ToggleCargoAttachment();
-        }
+        public void StopHookMovement() => _hookDirection = 0f;
+
+        public void ToggleCargoAttachment() => hook.ToggleCargoAttachment();
 
         private void SetupLocalMarkerPositions()
         {
@@ -145,10 +116,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             }
             
             _maxTravelDistance = Vector3.Distance(_localStartPosition, _localEndPosition);
-            if (_maxTravelDistance < 0.01f)
-            {
-                _maxTravelDistance = 30f; // protection for zero distance
-            }
+            if (_maxTravelDistance < 0.01f) _maxTravelDistance = 30f; // protection for zero distance
         }
 
         private void UpdateCurrentPositionFromTransform()
@@ -169,30 +137,22 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void HandleMovement()
         {
-            if (!craneSpecification || !transform.parent) return;
+            if (!craneSpecification || !transform.parent || _movementDirection == 0f) return;
             
             float moveSpeed = craneSpecification.TrolleyMoveSpeed;
-            float deltaTime = Time.deltaTime;
-            float normalizedSpeed = moveSpeed * deltaTime / _maxTravelDistance;
+            float deltaTime = Time.fixedDeltaTime;
+            float normalizedSpeed = moveSpeed * deltaTime / _maxTravelDistance * _movementDirection;
             
-            bool positionChanged = false;
+            float newPosition = CurrentPosition + normalizedSpeed;
             
-            if (_isMovingForward && _currentPosition < 1f)
+            if ((_movementDirection > 0 && newPosition <= 1f) || (_movementDirection < 0 && newPosition >= 0f))
             {
-                CurrentPosition += normalizedSpeed;
+                CurrentPosition = newPosition;
                 UpdateTransformLocalPosition();
-                positionChanged = true;
-            }
-            else if (_isMovingBackward && _currentPosition > 0f)
-            {
-                CurrentPosition -= normalizedSpeed;
-                UpdateTransformLocalPosition();
-                positionChanged = true;
-            }
-            
-            // Updating reactive property only when position actually changes
-            if (positionChanged) 
+                
+                // Update reactive
                 RelativeZPosition.Value = _currentPosition * _maxTravelDistance;
+            }
         }
 
         private void UpdateTransformLocalPosition()
@@ -203,21 +163,18 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void HandleHookMovement()
         {
-            if (!craneSpecification || !hook) return;
+            if (!craneSpecification || !hook || _hookDirection == 0f) return;
             
             float moveSpeed = craneSpecification.HookMoveSpeed;
             float maxDepth = craneSpecification.HookMaxDepth;
-            float deltaTime = Time.deltaTime;
-            float normalizedSpeed = moveSpeed * deltaTime / maxDepth;
+            float deltaTime = Time.fixedDeltaTime;
+            float normalizedSpeed = moveSpeed * deltaTime / maxDepth * _hookDirection;
             
-            if (_isHookMovingDown && _currentHookDepth < 1f)
+            float newDepth = CurrentHookDepth + normalizedSpeed;
+            
+            if ((_hookDirection > 0 && newDepth <= 1f) || (_hookDirection < 0 && newDepth >= 0f))
             {
-                CurrentHookDepth += normalizedSpeed;
-                UpdateHookPosition();
-            }
-            else if (_isHookMovingUp && _currentHookDepth > 0f)
-            {
-                CurrentHookDepth -= normalizedSpeed;
+                CurrentHookDepth = newDepth;
                 UpdateHookPosition();
             }
         }

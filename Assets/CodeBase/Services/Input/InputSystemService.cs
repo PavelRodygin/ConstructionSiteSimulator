@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using R3;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -126,7 +125,7 @@ namespace CodeBase.Services.Input
             _eventSystem.SetSelectedGameObject(selectedObject.gameObject);
         }
         
-        public string GetFullActionPath(InputAction action)
+        public string GetStringActionPath(InputAction action)
         {
             if (action == null)
             {
@@ -139,18 +138,46 @@ namespace CodeBase.Services.Input
             return $"{mapName}/{actionName}";
         }
         
-        public Observable<Unit> GetPerformedObservable(InputAction action)
+        public Observable<Unit> GetStartedObservable(InputAction action)
         {
             if (action == null)
             {
-                Debug.LogWarning("InputAction is null. Cannot create Observable.");
-                return Observable.Empty<Unit>(); // Возвращаем пустой Observable в случае ошибки
+                Debug.LogWarning("InputAction is null. Cannot create Started Observable.");
+                return Observable.Empty<Unit>();
             }
 
             return Observable.FromEvent(
                 (Action<InputAction.CallbackContext> h) => action.started += h,
                 h => action.started -= h
-            ).Select(_ => Unit.Default); // Преобразуем в Unit для унификации
+            ).Select(_ => Unit.Default);
+        }
+        
+        public Observable<Unit> GetPerformedObservable(InputAction action)
+        {
+            if (action == null)
+            {
+                Debug.LogWarning("InputAction is null. Cannot create Performed Observable.");
+                return Observable.Empty<Unit>();
+            }
+
+            return Observable.FromEvent(
+                (Action<InputAction.CallbackContext> h) => action.performed += h,
+                h => action.performed -= h
+            ).Select(_ => Unit.Default);
+        }
+        
+        public Observable<Unit> GetCanceledObservable(InputAction action)
+        {
+            if (action == null)
+            {
+                Debug.LogWarning("InputAction is null. Cannot create Canceled Observable.");
+                return Observable.Empty<Unit>();
+            }
+
+            return Observable.FromEvent(
+                (Action<InputAction.CallbackContext> h) => action.canceled += h,
+                h => action.canceled -= h
+            ).Select(_ => Unit.Default);
         }
 
         //The reference of getting observables:
@@ -182,12 +209,11 @@ namespace CodeBase.Services.Input
         private void InitializeEventSystem()    
         {
             _eventSystem = Object.FindObjectOfType<EventSystem>();
-            if (_eventSystem == null)
+            if (!_eventSystem)
             {
                 _eventSystem = CreateEventSystem();
                 _uiInputModule.actionsAsset = InputActions.asset;
                 Object.DontDestroyOnLoad(_eventSystem.gameObject);
-                // Debug.Log("Created new EventSystem.");
             }
             else
                 Debug.Log("Found existing EventSystem.");
