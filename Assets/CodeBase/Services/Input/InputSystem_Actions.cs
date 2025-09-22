@@ -1415,24 +1415,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TurnLeft"",
-                    ""type"": ""Button"",
-                    ""id"": ""f7a5efb1-dcf5-4899-9cd3-d02da7ca137f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TurnRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""5a100617-84b8-4592-a606-32a46345d530"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""HookDown"",
                     ""type"": ""Button"",
                     ""id"": ""6da10765-e99e-42de-8a66-c5083d4635dd"",
@@ -1531,28 +1513,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""TrolleyBackward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c5fd85f9-c80a-48e1-ad44-6151620755d9"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""TurnLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b5cb502c-9487-4329-804c-bb756ae5bc31"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""TurnRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1756,8 +1716,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Crane_CameraLook = m_Crane.FindAction("CameraLook", throwIfNotFound: true);
         m_Crane_TrolleyForward = m_Crane.FindAction("TrolleyForward", throwIfNotFound: true);
         m_Crane_TrolleyBackward = m_Crane.FindAction("TrolleyBackward", throwIfNotFound: true);
-        m_Crane_TurnLeft = m_Crane.FindAction("TurnLeft", throwIfNotFound: true);
-        m_Crane_TurnRight = m_Crane.FindAction("TurnRight", throwIfNotFound: true);
         m_Crane_HookDown = m_Crane.FindAction("HookDown", throwIfNotFound: true);
         m_Crane_HookUp = m_Crane.FindAction("HookUp", throwIfNotFound: true);
         m_Crane_AttachCargo = m_Crane.FindAction("AttachCargo", throwIfNotFound: true);
@@ -2304,8 +2262,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Crane_CameraLook;
     private readonly InputAction m_Crane_TrolleyForward;
     private readonly InputAction m_Crane_TrolleyBackward;
-    private readonly InputAction m_Crane_TurnLeft;
-    private readonly InputAction m_Crane_TurnRight;
     private readonly InputAction m_Crane_HookDown;
     private readonly InputAction m_Crane_HookUp;
     private readonly InputAction m_Crane_AttachCargo;
@@ -2334,14 +2290,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Crane/TrolleyBackward".
         /// </summary>
         public InputAction @TrolleyBackward => m_Wrapper.m_Crane_TrolleyBackward;
-        /// <summary>
-        /// Provides access to the underlying input action "Crane/TurnLeft".
-        /// </summary>
-        public InputAction @TurnLeft => m_Wrapper.m_Crane_TurnLeft;
-        /// <summary>
-        /// Provides access to the underlying input action "Crane/TurnRight".
-        /// </summary>
-        public InputAction @TurnRight => m_Wrapper.m_Crane_TurnRight;
         /// <summary>
         /// Provides access to the underlying input action "Crane/HookDown".
         /// </summary>
@@ -2397,12 +2345,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TrolleyBackward.started += instance.OnTrolleyBackward;
             @TrolleyBackward.performed += instance.OnTrolleyBackward;
             @TrolleyBackward.canceled += instance.OnTrolleyBackward;
-            @TurnLeft.started += instance.OnTurnLeft;
-            @TurnLeft.performed += instance.OnTurnLeft;
-            @TurnLeft.canceled += instance.OnTurnLeft;
-            @TurnRight.started += instance.OnTurnRight;
-            @TurnRight.performed += instance.OnTurnRight;
-            @TurnRight.canceled += instance.OnTurnRight;
             @HookDown.started += instance.OnHookDown;
             @HookDown.performed += instance.OnHookDown;
             @HookDown.canceled += instance.OnHookDown;
@@ -2438,12 +2380,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TrolleyBackward.started -= instance.OnTrolleyBackward;
             @TrolleyBackward.performed -= instance.OnTrolleyBackward;
             @TrolleyBackward.canceled -= instance.OnTrolleyBackward;
-            @TurnLeft.started -= instance.OnTurnLeft;
-            @TurnLeft.performed -= instance.OnTurnLeft;
-            @TurnLeft.canceled -= instance.OnTurnLeft;
-            @TurnRight.started -= instance.OnTurnRight;
-            @TurnRight.performed -= instance.OnTurnRight;
-            @TurnRight.canceled -= instance.OnTurnRight;
             @HookDown.started -= instance.OnHookDown;
             @HookDown.performed -= instance.OnHookDown;
             @HookDown.canceled -= instance.OnHookDown;
@@ -2783,20 +2719,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrolleyBackward(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "TurnLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnTurnLeft(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "TurnRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnTurnRight(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "HookDown" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
