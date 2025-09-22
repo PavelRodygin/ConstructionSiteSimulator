@@ -2739,14 +2739,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_YDrive.positionDamper
-      value: 20000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
-      propertyPath: m_YDrive.positionSpring
-      value: 50000
-      objectReference: {fileID: 0}
     - target: {fileID: 5182553613729520227, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
       propertyPath: m_Name
       value: Crane
