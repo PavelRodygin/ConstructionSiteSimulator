@@ -1,9 +1,0 @@
-using UnityEngine;
-
-namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views
-{
-    public class TurntableGaugeView : MonoBehaviour
-    {
-
-    }
-}

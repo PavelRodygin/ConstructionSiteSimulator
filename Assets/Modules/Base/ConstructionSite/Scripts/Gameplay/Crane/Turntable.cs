@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using R3;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 {
@@ -8,20 +9,10 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [SerializeField] private CraneSpecificationSO craneSpecification;
         [SerializeField] private Trolley trolley;
         
-        private float _currentRotationAngle;
-        private float _currentRotationSpeed;
         private float _targetRotationSpeed;
         
-        /// <summary>
-        /// Current rotation angle relative to the main crane support in degrees
-        /// </summary>
-        public float CurrentRotationAngle 
-        { 
-            get => _currentRotationAngle;
-            private set => _currentRotationAngle = NormalizeAngle(value);
-        }
-        
-        public float CurrentRotationSpeed => _currentRotationSpeed;
+        public ReactiveProperty<float> CurrentRotationAngle { get; } = new(0f);
+        public ReactiveProperty<float> CurrentRotationSpeed { get; } = new(0f);
 
         private void FixedUpdate()
         {
@@ -43,7 +34,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void HandleRotation()
         {
-            if (Mathf.Abs(_currentRotationSpeed) < 0.001f && Mathf.Abs(_targetRotationSpeed) < 0.001f)
+            if (Mathf.Abs(CurrentRotationSpeed.Value) < 0.001f && Mathf.Abs(_targetRotationSpeed) < 0.001f)
                 return;
             
             UpdateCurrentRotationSpeed();
@@ -52,10 +43,10 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void ApplyRotation()
         {
-            if (Mathf.Abs(_currentRotationSpeed) > 0.001f)
+            if (Mathf.Abs(CurrentRotationSpeed.Value) > 0.001f)
             {
-                float rotationAmount = _currentRotationSpeed * Time.fixedDeltaTime;
-                CurrentRotationAngle += rotationAmount;
+                float rotationAmount = CurrentRotationSpeed.Value * Time.fixedDeltaTime;
+                CurrentRotationAngle.Value = NormalizeAngle(CurrentRotationAngle.Value + rotationAmount);
                 transform.Rotate(0f, rotationAmount, 0f);
             }
         }
@@ -68,8 +59,8 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 craneSpecification.RotationDeceleration : 
                 craneSpecification.RotationAcceleration;
             
-            _currentRotationSpeed = Mathf.MoveTowards(
-                _currentRotationSpeed, 
+            CurrentRotationSpeed.Value = Mathf.MoveTowards(
+                CurrentRotationSpeed.Value, 
                 _targetRotationSpeed, 
                 acceleration * Time.fixedDeltaTime
             );

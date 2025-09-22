@@ -17,6 +17,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [field: SerializeField] public CraneSpecificationSO CraneSpecification { get; private set; }
         [field: SerializeField] public ConfigurableJoint WireJoint { get; private set; }
         public ReactiveProperty<float> CurrentLoad { get; } = new(0f);
+        public ReactiveProperty<float> CurrentCargoMass { get; } = new(0f);
         public Cargo CurrentCargo { get; private set; }
         public bool HasCargoAttached => CurrentCargo;
         
@@ -38,13 +39,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         private void Update()
         {
             CurrentLoad.Value = WireJoint.currentForce.magnitude;
-            
-            if (HasCargoAttached) {
-                Debug.Log($"Cargo mass: {CurrentCargo.Rigidbody.mass} kg");
-                Debug.Log($"Gravity: {Physics.gravity.magnitude} m/s²");
-                Debug.Log($"Measured force: {WireJoint.currentForce.magnitude} N");
-                Debug.Log($"Expected approx: {CurrentCargo.Rigidbody.mass * Physics.gravity.magnitude} N");
-            }
         }
         
         private void OnTriggerEnter(Collider other)
@@ -85,6 +79,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             }
             
             CurrentCargo = null;
+            CurrentCargoMass.Value = 0f;
         }
         
         public void ToggleCargoAttachment()
@@ -108,6 +103,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             ConfigureCargoJoint(_cargoJoint);
             
             CurrentCargo = cargo;
+            CurrentCargoMass.Value = cargo.Mass;
             CurrentCargo.OnAttached();
             
             return true;

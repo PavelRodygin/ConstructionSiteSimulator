@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7441889845969820553}
   - component: {fileID: 564336363441661767}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7
+  m_fontSize: 89.5
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.8
+  m_fontSize: 89.25
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49605e6b593d4780a79dac4556d92461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views.HookLoadGaugeView
-  loadValueText: {fileID: 2936050483271137991}
   progressBar: {fileID: 9083875145234791073}
+  loadValueText: {fileID: 2936050483271137991}
   hook: {fileID: 0}
 --- !u!1001 &6763179370416104937
 PrefabInstance:

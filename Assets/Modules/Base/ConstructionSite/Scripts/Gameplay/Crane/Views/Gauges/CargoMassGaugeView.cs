@@ -6,7 +6,7 @@ using CodeBase.Core.UI.Widgets.ProgressBars;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views
 {
-    public class HookLoadGaugeView : MonoBehaviour
+    public class CargoMassGaugeView : MonoBehaviour
     {
         [SerializeField] private BaseProgressBar progressBar;
         [SerializeField] private TMP_Text loadValueText;
@@ -37,18 +37,19 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views
         
         private void SetupReactiveSubscriptions()
         {
-            hook.CurrentLoad
+            hook.CurrentCargoMass
                 .Where(_ => gameObject.activeInHierarchy)
-                .Subscribe(OnLoadChanged)
+                .Subscribe(OnMassChanged)
                 .AddTo(this);
         }
         
-        private async void OnLoadChanged(float currentLoad)
+        private async void OnMassChanged(float currentMass)
         {
-            float normalizedProgress = Mathf.Clamp01(currentLoad / hook.CraneSpecification.MaxWireLoad);
+            float maxMass = hook.CraneSpecification.MaxWireLoad / Physics.gravity.magnitude;
+            float normalizedProgress = Mathf.Clamp01(currentMass / maxMass);
             
-            progressBar.SetDisplayValue(currentLoad.ToString("F1", CultureInfo.InvariantCulture));
-            loadValueText.text = currentLoad.ToString("F1", CultureInfo.InvariantCulture);
+            progressBar.SetDisplayValue(currentMass.ToString("F1", CultureInfo.InvariantCulture));
+            loadValueText.text = currentMass.ToString("F1", CultureInfo.InvariantCulture);
             await progressBar.UpdateProgress(normalizedProgress);
         }
     }

@@ -7,6 +7,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views
     {
         [SerializeField] private TurntableGaugeView turntableGauge;
         [SerializeField] private TrolleyPositionGaugeView trolleyPositionGauge;
-        [SerializeField] private HookLoadGaugeView hookLoadGauge;
+        [SerializeField] private CargoMassGaugeView cargoMassGauge;
     }
 }

@@ -1544,9 +1544,21 @@ PrefabInstance:
       propertyPath: trolley
       value: 
       objectReference: {fileID: 8708038707440287325}
+    - target: {fileID: 1381098900494105023, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: m_fontSize
+      value: 6.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489049415577706910, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: turntable
+      value: 
+      objectReference: {fileID: 4192610990201920181}
     - target: {fileID: 5240707766535075669, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: m_text
-      value: N
+      value: kg
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203711844980419505, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: m_Name
+      value: KgLable
       objectReference: {fileID: 0}
     - target: {fileID: 7716987536428257624, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1587,6 +1599,10 @@ PrefabInstance:
     - target: {fileID: 7716987536428257624, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047759658605194019, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: m_fontSize
+      value: 3.15
       objectReference: {fileID: 0}
     - target: {fileID: 8157934973857966094, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: hook
