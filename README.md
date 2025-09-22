@@ -1,4 +1,3 @@
-<img width="1906" height="2229" alt="Crane Architecture" src="https://github.com/user-attachments/assets/dd43fca9-a5cd-4452-a36f-f1f7d9d6adca" /># Symulator Placu Budowy
 # Zadanie testowe dla FlintSystems
 ## Witajcie, szanowni specjaliści FlintSystems!
 Przedstawiam wam: Projekt Unity poświęcony realistycznemu symulatorowi żurawia. Projekt z modułową, skalowalną architekturą (choć główny nacisk nie na niej). Projekt demonstruje moje umiejętności w pracy z fizyką i tworzeniu projektów symulacyjnych, doświadczenie w tworzeniu i dekompozycji encji, wykorzystanie DI, programowania reaktywnego i asynchronicznego.
