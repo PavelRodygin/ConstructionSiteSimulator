@@ -1,4 +1,4 @@
-# Symulator Placu Budowy
+<img width="1906" height="2229" alt="Crane Architecture" src="https://github.com/user-attachments/assets/dd43fca9-a5cd-4452-a36f-f1f7d9d6adca" /># Symulator Placu Budowy
 # Zadanie testowe dla FlintSystems
 ## Witajcie, szanowni specjaliści FlintSystems!
 Przedstawiam wam: Projekt Unity poświęcony realistycznemu symulatorowi żurawia. Projekt z modułową, skalowalną architekturą (choć główny nacisk nie na niej). Projekt demonstruje moje umiejętności w pracy z fizyką i tworzeniu projektów symulacyjnych, doświadczenie w tworzeniu i dekompozycji encji, wykorzystanie DI, programowania reaktywnego i asynchronicznego.
@@ -179,3 +179,6 @@ Ten projekt został opracowany jako **24-godzinny szybki prototyp** w celu zadem
 - Zasad architektury modułowej
 - Programowania reaktywnego z R3
 Chociaż podstawowa funkcjonalność jest kompletna i działa, niektóre ulepszenia i optymalizacje są w toku. Nacisk położono na pokazanie pracy z fizyką, podejścia architektonicznego i potencjału rozszerzalności, a nie na gotowość produkcyjną.
+
+Tutaj również jest prosty FlowChart architektury dźwigu:
+<img width="1906" height="2229" alt="Crane Architecture" src="https://github.com/user-attachments/assets/13dfcf7e-5725-4172-bef3-aba4b1286fa2" />
