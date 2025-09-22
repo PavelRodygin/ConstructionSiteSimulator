@@ -6,32 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="92b8baef-a0c4-443f-a706-4a1db3466d33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Services/Input/InputSystemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Services/Input/InputSystemService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Services/Input/InputSystem_Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Services/Input/InputSystem_Actions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Configs/Input/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Input/InputSystem_Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Basic.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Basic/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Basic/Scenes/MirrorBasic.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Basic/Scenes/MirrorBasic/LightingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Basic/Scenes/MirrorBasic/LightingData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Basic/Scenes/MirrorBasicSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Basic/Scenes/MirrorBasicSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Pong.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Pong/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Pong/Scenes/MirrorPong.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Pong/Scenes/MirrorPong/LightingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Mirror/Examples/Pong/Scenes/MirrorPong/LightingData.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Crane.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Crane.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/CraneDashboard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/CraneDashboard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Hooks/CraneHook.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Hooks/CraneHook.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Hooks/CraneHook_Old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Hooks/CraneHook_Old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Configs/CraneSpecificationSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Configs/CraneSpecificationSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Crane.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Trolley.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Turntable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Turntable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/CraneDashboardView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/CraneDashboardView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuModuleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuModuleController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/MainMenu/Scripts/MainMenuPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/HookLoadGaugeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/HookLoadGaugeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/TrolleyPositionGaugeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/TrolleyPositionGaugeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/ConstructionSiteModuleView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/ConstructionSiteModuleView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/CraneDashboardView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/CraneDashboardView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/HookLoadGauge.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/HookLoadGauge.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/HookLoadGauge.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/HookLoadGauge.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/TrolleyPositionGauge.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/TrolleyPositionGauge.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ThirdParty/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ThirdParty/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/.obsidian/workspace.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/Crane Architecture.canvas" beforeDir="false" afterPath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/Crane Architecture.canvas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +127,8 @@
       <workItem from="1758267923266" duration="10467000" />
       <workItem from="1758368938205" duration="15549000" />
       <workItem from="1758404550277" duration="1283000" />
-      <workItem from="1758465636581" duration="4778000" />
+      <workItem from="1758465636581" duration="5768000" />
+      <workItem from="1758482758916" duration="12873000" />
     </task>
     <servers />
   </component>
@@ -145,63 +145,5 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs</url>
-          <line>46</line>
-          <properties documentPath="D:\Repositories\ConstructionSiteSimulator\Assets\Modules\Base\ConstructionSite\Scripts\Gameplay\Crane\Hook.cs" containingFunctionPresentation="Method 'OnTriggerEnter'">
-            <startOffsets>
-              <option value="1458" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1459" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs</url>
-          <line>64</line>
-          <properties documentPath="D:\Repositories\ConstructionSiteSimulator\Assets\Modules\Base\ConstructionSite\Scripts\Gameplay\Crane\Hook.cs" containingFunctionPresentation="Method 'TryAttachCargo'">
-            <startOffsets>
-              <option value="2017" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2018" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs</url>
-          <line>71</line>
-          <properties documentPath="D:\Repositories\ConstructionSiteSimulator\Assets\Modules\Base\ConstructionSite\Scripts\Gameplay\Crane\Hook.cs" containingFunctionPresentation="Method 'TryDetachCargo'">
-            <startOffsets>
-              <option value="2224" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2225" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs</url>
-          <line>86</line>
-          <properties documentPath="D:\Repositories\ConstructionSiteSimulator\Assets\Modules\Base\ConstructionSite\Scripts\Gameplay\Crane\Hook.cs" containingFunctionPresentation="Method 'ToggleCargoAttachment'">
-            <startOffsets>
-              <option value="2591" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2592" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

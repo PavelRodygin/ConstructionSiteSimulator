@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using R3;
+using UnityEngine;
 
 namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 {
@@ -11,22 +12,13 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [SerializeField] private float cargoJointMaxForce = 100000f;
 
         private ConfigurableJoint _cargoJoint;
-        private Cargo _nearbyCargo;
+        private Cargo _currentCargo;
         
-        [field: SerializeField] public ConfigurableJoint Joint { get; private set; }
-        
+        [field: SerializeField] public CraneSpecificationSO CraneSpecification { get; private set; }
+        [field: SerializeField] public ConfigurableJoint WireJoint { get; private set; }
+        public ReactiveProperty<float> CurrentLoad { get; } = new(0f);
         public Cargo CurrentCargo { get; private set; }
-        public bool HasCargoAttached => CurrentCargo != null;
-        public float CurrentLoad
-        {
-            get
-            {
-                if (!Joint || !Joint.connectedBody) return 0f;
-                
-                var force = Joint.currentForce;
-                return force.magnitude;
-            }
-        }
+        public bool HasCargoAttached => CurrentCargo;
         
         public float CurrentLoadKg
         {
@@ -39,33 +31,45 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private void Awake()
         {
-            if (!Joint) 
+            if (!WireJoint) 
                 Debug.LogWarning($"Hook {name} is missing ConfigurableJoint reference!");
         }
-        
-        private void OnTriggerEnter(Collider collider)
+
+        private void Update()
         {
-            if (_nearbyCargo != null) return; // Already have cargo in range
+            CurrentLoad.Value = WireJoint.currentForce.magnitude;
             
-            collider.TryGetComponent<Cargo>(out var cargo);
+            if (HasCargoAttached) {
+                Debug.Log($"Cargo mass: {CurrentCargo.Rigidbody.mass} kg");
+                Debug.Log($"Gravity: {Physics.gravity.magnitude} m/s²");
+                Debug.Log($"Measured force: {WireJoint.currentForce.magnitude} N");
+                Debug.Log($"Expected approx: {CurrentCargo.Rigidbody.mass * Physics.gravity.magnitude} N");
+            }
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_currentCargo) return;
+            
+            other.TryGetComponent<Cargo>(out var cargo);
             
             if (cargo && cargo != CurrentCargo && cargo.IsAttachable)
-                _nearbyCargo = cargo;
+                _currentCargo = cargo;
         }
         
         private void OnTriggerExit(Collider other)
         {
             var cargo = other.GetComponent<Cargo>();
             
-            if (cargo == _nearbyCargo)
-                _nearbyCargo = null;
+            if (cargo == _currentCargo)
+                _currentCargo = null;
         }
         
         public bool TryAttachCargo()
         {
-            if (HasCargoAttached || _nearbyCargo == null) return false;
+            if (HasCargoAttached || !_currentCargo) return false;
             
-            return AttachToSpecificCargo(_nearbyCargo);
+            return AttachToSpecificCargo(_currentCargo);
         }
         
         public void TryDetachCargo()
@@ -141,7 +145,5 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             
             joint.anchor = Vector3.down * 0.5f;
         }
-        
-        
     }
 }

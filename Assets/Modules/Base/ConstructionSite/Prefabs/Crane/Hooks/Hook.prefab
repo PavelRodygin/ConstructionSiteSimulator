@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1315680645875859723}
   - component: {fileID: 5635780771262162529}
   m_Layer: 0
-  m_Name: CraneHook
+  m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,8 @@ MonoBehaviour:
   cargoJointSpring: 10000
   cargoJointDamper: 1000
   cargoJointMaxForce: 100000
-  <Joint>k__BackingField: {fileID: 4389592437248102005}
+  <CraneSpecification>k__BackingField: {fileID: 11400000, guid: eaa8e49999c46ca48875e72f01b91ea4, type: 2}
+  <WireJoint>k__BackingField: {fileID: 4389592437248102005}
 --- !u!54 &5934310717036975564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,19 +138,19 @@ ConfigurableJoint:
   m_XDrive:
     serializedVersion: 4
     positionSpring: 10000
-    positionDamper: 500
+    positionDamper: 5000
     maximumForce: 50000
     useAcceleration: 0
   m_YDrive:
     serializedVersion: 4
-    positionSpring: 20000
-    positionDamper: 7500
+    positionSpring: 90000
+    positionDamper: 15000
     maximumForce: 500000
     useAcceleration: 0
   m_ZDrive:
     serializedVersion: 4
     positionSpring: 10000
-    positionDamper: 500
+    positionDamper: 5000
     maximumForce: 50000
     useAcceleration: 0
   m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}

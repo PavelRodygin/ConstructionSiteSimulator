@@ -144,7 +144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: ThirdPersonMPModule::Modules.Base.ThirdPersonMPModule.Scripts.ThirdPersonMPView
   <AnimationElement>k__BackingField: {fileID: 140403774526292463}
   mainMenuButton: {fileID: 3212842411858370114}
-  soundToggle: {fileID: 0}
 --- !u!114 &140403774526292463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +530,10 @@ PrefabInstance:
     - target: {fileID: 7975291619292319680, guid: 2734311874fc8244fad98045821d5b0d, type: 3}
       propertyPath: m_fontSize
       value: 26.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195522013247143487, guid: 2734311874fc8244fad98045821d5b0d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.9999924
       objectReference: {fileID: 0}
     - target: {fileID: 8527901279585973621, guid: 2734311874fc8244fad98045821d5b0d, type: 3}
       propertyPath: m_fontSize

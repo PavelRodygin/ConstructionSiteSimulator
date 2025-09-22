@@ -15,9 +15,9 @@
               "state": {
                 "file": "Crane Architecture.canvas",
                 "viewState": {
-                  "x": -544.7429139241586,
-                  "y": -227.55111572844945,
-                  "zoom": -0.3333333492555486
+                  "x": -347.9823361307083,
+                  "y": -204.16158109600005,
+                  "zoom": -0.6666666865694357
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -81,7 +81,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "69c875695cfc0c26",

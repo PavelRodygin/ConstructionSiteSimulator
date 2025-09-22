@@ -43,7 +43,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             _inputSystemService.SwitchToCrane();
             _isControlEnabled = true;
             
-            SetupReactiveInput();
+            SetupInputHandling();
         }
 
         public void DisableCraneControls()
@@ -60,7 +60,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             trolley.StopHookMovement();
         }
 
-        private void SetupReactiveInput()
+        private void SetupInputHandling()
         {
             var actionMap = _inputSystemService.InputActions.Crane;
             
@@ -68,17 +68,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 .Where(_ => _isControlEnabled)
                 .Select(_ => actionMap.TurntableRotate.ReadValue<Vector2>())
                 .DistinctUntilChanged()
-                .Subscribe(value =>
-                {
-                    if (Mathf.Abs(value.x) > 0.1f) // Threshold для jitter
-                    {
-                        turntable.Rotate(value.x);
-                    }
-                    else
-                    {
-                        turntable.Rotate(0f);
-                    }
-                })
+                .Subscribe(value => turntable.Rotate(Mathf.Abs(value.x) > 0.1f ? value.x : 0f))
                 .AddTo(_inputDisposables);
             
             // Trolley movement: Polling states (forward/backward)

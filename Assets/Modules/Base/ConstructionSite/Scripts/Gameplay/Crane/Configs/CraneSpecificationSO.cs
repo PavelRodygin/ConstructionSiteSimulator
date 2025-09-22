@@ -12,8 +12,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [field: SerializeField] public float RotationDeceleration { get; private set; } = 90f; // degrees per second squared
         
         [Header("Load Capacity")]
-        [field: SerializeField] public float RatedCargoWeight { get; private set; } = 10000f;
-        [field: SerializeField] public float MaxCargoWeight { get; private set; } = 40000f;
+        [field: SerializeField] public float MaxWireLoad { get; private set; } = 400000f; //Newtons
         
         [Header("Crane Performance")]
         [field: SerializeField, Range(0f, 1f)] public float MaxSpeedReduction { get; private set; } = 0.75f;

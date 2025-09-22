@@ -1465,28 +1465,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1946733969331261003, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_Name
-      value: CraneHook
+      value: Hook
       objectReference: {fileID: 0}
     - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_ConnectedBody
       value: 
       objectReference: {fileID: 3101758222906683774}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_XDrive.positionDamper
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_YDrive.positionDamper
-      value: 15000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_YDrive.positionSpring
-      value: 90000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389592437248102005, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
-      propertyPath: m_ZDrive.positionDamper
-      value: 5000
-      objectReference: {fileID: 0}
     - target: {fileID: 4518234663677938600, guid: 50dedfaca5d5cec458ac4058aa3570a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1560,6 +1544,10 @@ PrefabInstance:
       propertyPath: trolley
       value: 
       objectReference: {fileID: 8708038707440287325}
+    - target: {fileID: 5240707766535075669, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: m_text
+      value: N
+      objectReference: {fileID: 0}
     - target: {fileID: 7716987536428257624, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.648
@@ -1600,6 +1588,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8157934973857966094, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: hook
+      value: 
+      objectReference: {fileID: 8925794671756385262}
     - target: {fileID: 8192705970849241507, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: m_Name
       value: CraneDashboard

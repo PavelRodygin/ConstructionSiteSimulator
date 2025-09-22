@@ -9,7 +9,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [SerializeField] private Trolley trolley;
         
         private float _currentRotationAngle;
-        private float _currentCargoWeight;
         private float _currentRotationSpeed;
         private float _targetRotationSpeed;
         
@@ -22,18 +21,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             private set => _currentRotationAngle = NormalizeAngle(value);
         }
         
-        public float CurrentCargoWeight 
-        { 
-            get => _currentCargoWeight;
-            set => _currentCargoWeight = Mathf.Max(0f, value);
-        }
-        
         public float CurrentRotationSpeed => _currentRotationSpeed;
-        
-        private void Update()
-        {
-            UpdateCargoWeight();
-        }
 
         private void FixedUpdate()
         {
@@ -46,18 +34,12 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             
             float absDir = Mathf.Abs(direction);
             if (absDir > 0.1f) // Threshold for ignore small jitter
-                _targetRotationSpeed = GetAdjustedRotationSpeed() * Mathf.Sign(direction);
+                _targetRotationSpeed = craneSpecification.BaseRotationSpeed * Mathf.Sign(direction);
             else
                 _targetRotationSpeed = 0f;
         }
 
         public void StopRotation() => _targetRotationSpeed = 0f;
-
-        private void UpdateCargoWeight()
-        {
-            // Automatically update cargo weight from trolley's hook
-            if (trolley) CurrentCargoWeight = trolley.CurrentHookLoad;
-        }
 
         private void HandleRotation()
         {
@@ -91,28 +73,6 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
                 _targetRotationSpeed, 
                 acceleration * Time.fixedDeltaTime
             );
-        }
-
-        private float GetAdjustedRotationSpeed()
-        {
-            if (!craneSpecification) return 0f;
-            
-            // No speed reduction up to rated capacity (10 tons)
-            if (_currentCargoWeight <= craneSpecification.RatedCargoWeight)
-            {
-                return craneSpecification.BaseRotationSpeed;
-            }
-            
-            // Progressive speed reduction from rated capacity to maximum load
-            float excessWeight = _currentCargoWeight - craneSpecification.RatedCargoWeight;
-            float excessCapacity = craneSpecification.MaxCargoWeight - craneSpecification.RatedCargoWeight;
-            float overloadFactor = excessWeight / excessCapacity;
-            
-            // Speed reduction based on configuration
-            float speedReduction = Mathf.Lerp(0f, craneSpecification.MaxSpeedReduction, overloadFactor);
-            float adjustedSpeed = craneSpecification.BaseRotationSpeed * (1f - speedReduction);
-            
-            return Mathf.Max(craneSpecification.MinRotationSpeed, adjustedSpeed);
         }
 
         private float NormalizeAngle(float angle)

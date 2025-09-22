@@ -24,7 +24,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         private float _currentHookDepth; // [0; 1]
         private float _hookDirection; // -1 up, 0 stop, 1 down
         
-        public ReactiveProperty<float> RelativeZPosition { get; private set; } = new(0f);
+        public ReactiveProperty<float> RelativeZPosition { get; } = new(0f);
         
         public float CurrentPosition 
         { 
@@ -38,29 +38,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
             private set => _currentHookDepth = Mathf.Clamp01(value);
         }
         
-        public Vector3 HookPositionRelativeToAnchor
-        {
-            get
-            {
-                if (!hook || !cableAnchor) return Vector3.zero;
-                return hook.transform.localPosition - cableAnchor.localPosition;
-            }
-        }
-        
-        public Vector3 HookTargetPosition
-        {
-            get
-            {
-                if (!hook || !hook.Joint) return Vector3.zero;
-                return hook.Joint.targetPosition;
-            }
-        }
-        
         public float CurrentHookLoad => hook ? hook.CurrentLoadKg : 0f;
-        
-        public float CurrentHookLoadNewtons => hook ? hook.CurrentLoad : 0f;
-        
-        public bool HasCargoAttached => hook && hook.HasCargoAttached;
         
         private void Start()
         {
@@ -79,11 +57,11 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         
         private void InitializeHook()
         {
-            if (!hook || !hook.Joint) return;
+            if (!hook || !hook.WireJoint) return;
             
-            Vector3 initialTarget = hook.Joint.targetPosition;
+            Vector3 initialTarget = hook.WireJoint.targetPosition;
             initialTarget.y = 0f;
-            hook.Joint.targetPosition = initialTarget;
+            hook.WireJoint.targetPosition = initialTarget;
             _currentHookDepth = 0f;
         }
 
@@ -181,13 +159,13 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
 
         private void UpdateHookPosition()
         {
-            if (!hook || !hook.Joint) return;
+            if (!hook || !hook.WireJoint) return;
             
             float maxDepth = craneSpecification ? craneSpecification.HookMaxDepth : 15f;
             
-            Vector3 currentTarget = hook.Joint.targetPosition;
+            Vector3 currentTarget = hook.WireJoint.targetPosition;
             currentTarget.y = -maxDepth * _currentHookDepth;
-            hook.Joint.targetPosition = currentTarget;
+            hook.WireJoint.targetPosition = currentTarget;
         }
     }
 }

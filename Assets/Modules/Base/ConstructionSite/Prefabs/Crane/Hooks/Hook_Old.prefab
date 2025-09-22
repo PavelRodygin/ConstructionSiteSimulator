@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1582776200027953089}
   - component: {fileID: 2218620379892438079}
   m_Layer: 0
-  m_Name: CraneHook_Old
+  m_Name: Hook_Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

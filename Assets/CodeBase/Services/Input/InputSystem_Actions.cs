@@ -1388,7 +1388,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""31747aa7-fc2e-429e-b053-3f790d9855af"",
             ""actions"": [
                 {
-                    ""name"": ""Look"",
+                    ""name"": ""CameraLook"",
                     ""type"": ""Value"",
                     ""id"": ""43109fd0-b42a-48d7-b6e4-c013cef4835f"",
                     ""expectedControlType"": ""Vector2"",
@@ -1467,6 +1467,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TrolleyMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""82ddac43-9e15-464f-a991-32336c62f22f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1477,7 +1486,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=0.1,y=0.1)"",
                     ""groups"": "";Keyboard&Mouse;Touch"",
-                    ""action"": ""Look"",
+                    ""action"": ""CameraLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1488,7 +1497,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=300,y=300),StickDeadzone"",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Look"",
+                    ""action"": ""CameraLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1499,7 +1508,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Look"",
+                    ""action"": ""CameraLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1612,6 +1621,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""TurntableRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""7da17f2f-89c7-4786-a725-8f3a4593845d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TrolleyMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""de65654e-6cf5-4026-b3c2-d5fff9923ffb"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TrolleyMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""db77d525-bccb-4bc2-8039-e3cfedf0a53b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""TrolleyMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -1711,7 +1753,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_PlayerHumanoid_EnterVehicle = m_PlayerHumanoid.FindAction("EnterVehicle", throwIfNotFound: true);
         // Crane
         m_Crane = asset.FindActionMap("Crane", throwIfNotFound: true);
-        m_Crane_Look = m_Crane.FindAction("Look", throwIfNotFound: true);
+        m_Crane_CameraLook = m_Crane.FindAction("CameraLook", throwIfNotFound: true);
         m_Crane_TrolleyForward = m_Crane.FindAction("TrolleyForward", throwIfNotFound: true);
         m_Crane_TrolleyBackward = m_Crane.FindAction("TrolleyBackward", throwIfNotFound: true);
         m_Crane_TurnLeft = m_Crane.FindAction("TurnLeft", throwIfNotFound: true);
@@ -1720,6 +1762,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Crane_HookUp = m_Crane.FindAction("HookUp", throwIfNotFound: true);
         m_Crane_AttachCargo = m_Crane.FindAction("AttachCargo", throwIfNotFound: true);
         m_Crane_TurntableRotate = m_Crane.FindAction("TurntableRotate", throwIfNotFound: true);
+        m_Crane_TrolleyMove = m_Crane.FindAction("TrolleyMove", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -2258,7 +2301,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // Crane
     private readonly InputActionMap m_Crane;
     private List<ICraneActions> m_CraneActionsCallbackInterfaces = new List<ICraneActions>();
-    private readonly InputAction m_Crane_Look;
+    private readonly InputAction m_Crane_CameraLook;
     private readonly InputAction m_Crane_TrolleyForward;
     private readonly InputAction m_Crane_TrolleyBackward;
     private readonly InputAction m_Crane_TurnLeft;
@@ -2267,6 +2310,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Crane_HookUp;
     private readonly InputAction m_Crane_AttachCargo;
     private readonly InputAction m_Crane_TurntableRotate;
+    private readonly InputAction m_Crane_TrolleyMove;
     /// <summary>
     /// Provides access to input actions defined in input action map "Crane".
     /// </summary>
@@ -2279,9 +2323,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public CraneActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Crane/Look".
+        /// Provides access to the underlying input action "Crane/CameraLook".
         /// </summary>
-        public InputAction @Look => m_Wrapper.m_Crane_Look;
+        public InputAction @CameraLook => m_Wrapper.m_Crane_CameraLook;
         /// <summary>
         /// Provides access to the underlying input action "Crane/TrolleyForward".
         /// </summary>
@@ -2315,6 +2359,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @TurntableRotate => m_Wrapper.m_Crane_TurntableRotate;
         /// <summary>
+        /// Provides access to the underlying input action "Crane/TrolleyMove".
+        /// </summary>
+        public InputAction @TrolleyMove => m_Wrapper.m_Crane_TrolleyMove;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Crane; }
@@ -2340,9 +2388,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_CraneActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_CraneActionsCallbackInterfaces.Add(instance);
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
+            @CameraLook.started += instance.OnCameraLook;
+            @CameraLook.performed += instance.OnCameraLook;
+            @CameraLook.canceled += instance.OnCameraLook;
             @TrolleyForward.started += instance.OnTrolleyForward;
             @TrolleyForward.performed += instance.OnTrolleyForward;
             @TrolleyForward.canceled += instance.OnTrolleyForward;
@@ -2367,6 +2415,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TurntableRotate.started += instance.OnTurntableRotate;
             @TurntableRotate.performed += instance.OnTurntableRotate;
             @TurntableRotate.canceled += instance.OnTurntableRotate;
+            @TrolleyMove.started += instance.OnTrolleyMove;
+            @TrolleyMove.performed += instance.OnTrolleyMove;
+            @TrolleyMove.canceled += instance.OnTrolleyMove;
         }
 
         /// <summary>
@@ -2378,9 +2429,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="CraneActions" />
         private void UnregisterCallbacks(ICraneActions instance)
         {
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
+            @CameraLook.started -= instance.OnCameraLook;
+            @CameraLook.performed -= instance.OnCameraLook;
+            @CameraLook.canceled -= instance.OnCameraLook;
             @TrolleyForward.started -= instance.OnTrolleyForward;
             @TrolleyForward.performed -= instance.OnTrolleyForward;
             @TrolleyForward.canceled -= instance.OnTrolleyForward;
@@ -2405,6 +2456,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TurntableRotate.started -= instance.OnTurntableRotate;
             @TurntableRotate.performed -= instance.OnTurntableRotate;
             @TurntableRotate.canceled -= instance.OnTurntableRotate;
+            @TrolleyMove.started -= instance.OnTrolleyMove;
+            @TrolleyMove.performed -= instance.OnTrolleyMove;
+            @TrolleyMove.canceled -= instance.OnTrolleyMove;
         }
 
         /// <summary>
@@ -2709,12 +2763,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface ICraneActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "CameraLook" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLook(InputAction.CallbackContext context);
+        void OnCameraLook(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "TrolleyForward" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -2771,5 +2825,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTurntableRotate(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TrolleyMove" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTrolleyMove(InputAction.CallbackContext context);
     }
 }
