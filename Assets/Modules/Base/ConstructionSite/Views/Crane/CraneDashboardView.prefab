@@ -184,6 +184,7 @@ RectTransform:
   - {fileID: 8086240259648661901}
   - {fileID: 1660498834287507644}
   - {fileID: 3467384493533144266}
+  - {fileID: 2113299321617456546}
   - {fileID: 6681403593628523049}
   - {fileID: 6704009102519302415}
   m_Father: {fileID: 0}
@@ -206,9 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views.CraneDashboardView
   <AnimationElement>k__BackingField: {fileID: 8830165196388936165}
-  turntableGauge: {fileID: 0}
+  turntableGauge: {fileID: 7466011698926924431}
   trolleyPositionGauge: {fileID: 6392741559170201369}
-  cargoMassGauge: {fileID: 0}
+  cargoMassGauge: {fileID: 2947071728357358367}
 --- !u!223 &1079590396251517560
 Canvas:
   m_ObjectHideFlags: 0
@@ -578,6 +579,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6043356131673350929, guid: ab15e654f2f3c564b895adcc0cd9bafe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069505118569424987, guid: ab15e654f2f3c564b895adcc0cd9bafe, type: 3}
       propertyPath: m_fontSize
       value: 100
@@ -615,6 +620,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7034640643637539368}
     m_Modifications:
+    - target: {fileID: 1966612659475930328, guid: 54906030e231b384486782c712fe8647, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2936050483271137991, guid: 54906030e231b384486782c712fe8647, type: 3}
       propertyPath: m_fontSize
       value: 89.5
@@ -699,6 +708,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6043356131673350929, guid: 54906030e231b384486782c712fe8647, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069505118569424987, guid: 54906030e231b384486782c712fe8647, type: 3}
       propertyPath: m_fontSize
       value: 89.25
@@ -721,6 +734,119 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5934089634056172707, guid: 54906030e231b384486782c712fe8647, type: 3}
   m_PrefabInstance: {fileID: 4994872351751851039}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2947071728357358367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7905862368016529152, guid: 54906030e231b384486782c712fe8647, type: 3}
+  m_PrefabInstance: {fileID: 4994872351751851039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49605e6b593d4780a79dac4556d92461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views.HookLoadGaugeView
+--- !u!1001 &5695344465408682241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7034640643637539368}
+    m_Modifications:
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.39763778
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.7592593
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.003937008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5277778
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197465605606283607, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+      propertyPath: m_Name
+      value: HookHeightGauge
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+--- !u!224 &2113299321617456546 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5934089634056172707, guid: 602a6a4b7b47ee94ea8a38bfd086b3d8, type: 3}
+  m_PrefabInstance: {fileID: 5695344465408682241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7080926108794966121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -731,7 +857,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2936050483271137991, guid: ef229f172f9f3dd4fa3c2cc6cda2f523, type: 3}
       propertyPath: m_fontSize
-      value: 100
+      value: 88.6
       objectReference: {fileID: 0}
     - target: {fileID: 5934089634056172707, guid: ef229f172f9f3dd4fa3c2cc6cda2f523, type: 3}
       propertyPath: m_Pivot.x
@@ -813,9 +939,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6043356131673350929, guid: ef229f172f9f3dd4fa3c2cc6cda2f523, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069505118569424987, guid: ef229f172f9f3dd4fa3c2cc6cda2f523, type: 3}
       propertyPath: m_fontSize
-      value: 97.2
+      value: 41.75
       objectReference: {fileID: 0}
     - target: {fileID: 9197465605606283607, guid: ef229f172f9f3dd4fa3c2cc6cda2f523, type: 3}
       propertyPath: m_Name
@@ -831,3 +961,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5934089634056172707, guid: ef229f172f9f3dd4fa3c2cc6cda2f523, type: 3}
   m_PrefabInstance: {fileID: 7080926108794966121}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7466011698926924431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 421116058446881510, guid: ef229f172f9f3dd4fa3c2cc6cda2f523, type: 3}
+  m_PrefabInstance: {fileID: 7080926108794966121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c191157a234b388b762175e312869c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ConstructionSite::Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views.TurntableGaugeView

@@ -1,18 +1,22 @@
 {
 	"nodes":[
 		{"id":"c3911d190b4fbbc0","type":"text","text":"**Crane**\n\n---\n- DI\n- Input\n- Player Interaction","x":-713,"y":-680,"width":250,"height":220},
-		{"id":"ec92647c522a6013","type":"text","text":"**DashboardView**\n\n---\n- Presents Data from crane modules\n- ---\n- Local azimuth data ","x":-300,"y":-710,"width":220,"height":280},
-		{"id":"49c327ea2f4e84aa","type":"file","file":"Pasted image 20250920160703.png","x":-1386,"y":-170,"width":181,"height":399},
-		{"id":"be42972cfe74d676","type":"text","text":"**Naming References**","x":-1420,"y":-360,"width":250,"height":70},
 		{"id":"1f540bde9024046f","type":"text","text":"**Trolley**\n\n---\n- Hook & self Z movement \n- Hook Y movement\n- ---\n- Self position relative to tower\n- Hook Heights","x":-737,"y":-250,"width":298,"height":300},
 		{"id":"f319cbf2e5b82a3d","type":"text","text":"**Turntable**\n\n---\n- Crane Y Rotation\n- ReactiveProperty \n- ---\n- Local azimuth data ","x":-1060,"y":-250,"width":220,"height":280},
-		{"id":"395591fec7a372a6","type":"text","text":"**Hook**\n\n---\n- Crane Y Rotation\n- ReactiveProperty \n- ---\n- Local azimuth data ","x":-340,"y":-250,"width":220,"height":280}
+		{"id":"395591fec7a372a6","type":"text","text":"**Hook**\n\n---\n- Crane Y Rotation\n- ReactiveProperty \n- ---\n- Local azimuth data ","x":-340,"y":-250,"width":220,"height":280},
+		{"id":"be42972cfe74d676","type":"text","text":"**Naming References**","x":-1380,"y":-680,"width":250,"height":70},
+		{"id":"49c327ea2f4e84aa","type":"file","file":"Pasted image 20250920160703.png","x":-1346,"y":-490,"width":181,"height":399},
+		{"id":"ec92647c522a6013","type":"text","text":"**DashboardView**\n\n---\n- Presents Data from crane modules\n- ---\n- Local azimuth data ","x":-698,"y":180,"width":220,"height":280},
+		{"id":"b70e48836c19d90c","type":"text","text":"**TurntableGaugeView**\n\n---\n- Presents Data from crane modules\n- ---\n- Local azimuth data ","x":-1060,"y":520,"width":220,"height":280},
+		{"id":"12dbc602d78dfdfe","type":"text","text":"**TurntableGaugeView**\n\n---\n- Presents Data from crane modules\n- ---\n- Local azimuth data ","x":-698,"y":520,"width":220,"height":280}
 	],
 	"edges":[
 		{"id":"e6985710f1310db0","fromNode":"c3911d190b4fbbc0","fromSide":"bottom","toNode":"1f540bde9024046f","toSide":"top"},
-		{"id":"40b1cd53d49df729","fromNode":"c3911d190b4fbbc0","fromSide":"right","toNode":"ec92647c522a6013","toSide":"left"},
 		{"id":"44b906181330df55","fromNode":"be42972cfe74d676","fromSide":"bottom","toNode":"49c327ea2f4e84aa","toSide":"top"},
 		{"id":"234ef764771a3aad","fromNode":"c3911d190b4fbbc0","fromSide":"bottom","toNode":"395591fec7a372a6","toSide":"top"},
-		{"id":"f280d7e2af9a7b96","fromNode":"c3911d190b4fbbc0","fromSide":"bottom","toNode":"f319cbf2e5b82a3d","toSide":"top"}
+		{"id":"f280d7e2af9a7b96","fromNode":"c3911d190b4fbbc0","fromSide":"bottom","toNode":"f319cbf2e5b82a3d","toSide":"top"},
+		{"id":"1874a4e89e6a0d85","fromNode":"f319cbf2e5b82a3d","fromSide":"bottom","toNode":"ec92647c522a6013","toSide":"top"},
+		{"id":"c9a965553b548691","fromNode":"1f540bde9024046f","fromSide":"bottom","toNode":"ec92647c522a6013","toSide":"top"},
+		{"id":"e55bc139f84b0b62","fromNode":"395591fec7a372a6","fromSide":"bottom","toNode":"ec92647c522a6013","toSide":"top"}
 	]
 }

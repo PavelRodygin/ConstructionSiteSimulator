@@ -11,13 +11,16 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         [SerializeField] private float cargoJointDamper = 1000f;
         [SerializeField] private float cargoJointMaxForce = 100000f;
 
+        private Rigidbody _rb;
         private ConfigurableJoint _cargoJoint;
         private Cargo _currentCargo;
-        
+
         [field: SerializeField] public CraneSpecificationSO CraneSpecification { get; private set; }
         [field: SerializeField] public ConfigurableJoint WireJoint { get; private set; }
         public ReactiveProperty<float> CurrentLoad { get; } = new(0f);
         public ReactiveProperty<float> CurrentCargoMass { get; } = new(0f);
+        public ReactiveProperty<float> CurrentHeight { get; } = new(0f);
+        public ReactiveProperty<float> VerticalSpeed { get; } = new(0f);
         public Cargo CurrentCargo { get; private set; }
         public bool HasCargoAttached => CurrentCargo;
         
@@ -34,11 +37,24 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane
         {
             if (!WireJoint) 
                 Debug.LogWarning($"Hook {name} is missing ConfigurableJoint reference!");
+            
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Update()
         {
             CurrentLoad.Value = WireJoint.currentForce.magnitude;
+            CurrentHeight.Value = CalculateHeight();
+            VerticalSpeed.Value = _rb.linearVelocity.y;
+        }
+        
+        private float CalculateHeight()
+        {
+            Vector3 anchorPos = WireJoint.connectedBody 
+                ? WireJoint.connectedBody.transform.TransformPoint(WireJoint.connectedAnchor) 
+                : WireJoint.connectedAnchor;
+            
+            return anchorPos.y - transform.position.y;
         }
         
         private void OnTriggerEnter(Collider other)

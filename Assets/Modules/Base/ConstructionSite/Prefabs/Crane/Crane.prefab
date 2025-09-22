@@ -1552,10 +1552,22 @@ PrefabInstance:
       propertyPath: turntable
       value: 
       objectReference: {fileID: 4192610990201920181}
+    - target: {fileID: 4496786485685158103, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: m_fontSize
+      value: 7.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819431728647574091, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: m_fontSize
+      value: 8.95
+      objectReference: {fileID: 0}
     - target: {fileID: 5240707766535075669, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: m_text
       value: kg
       objectReference: {fileID: 0}
+    - target: {fileID: 6032648143955666262, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
+      propertyPath: hook
+      value: 
+      objectReference: {fileID: 8925794671756385262}
     - target: {fileID: 7203711844980419505, guid: 4ad79806e20c99046a451515cf20c681, type: 3}
       propertyPath: m_Name
       value: KgLable

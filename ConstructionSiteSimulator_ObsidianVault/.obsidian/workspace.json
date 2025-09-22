@@ -15,9 +15,9 @@
               "state": {
                 "file": "Crane Architecture.canvas",
                 "viewState": {
-                  "x": -347.9823361307083,
-                  "y": -204.16158109600005,
-                  "zoom": -0.6666666865694357
+                  "x": -306.0840591500492,
+                  "y": 374.21664369129206,
+                  "zoom": -0.6666666746277743
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -81,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "69c875695cfc0c26",
@@ -175,9 +174,9 @@
   },
   "active": "397ea8315ce9b787",
   "lastOpenFiles": [
-    "Pasted image 20250920160703.png",
     "Project Architecture.canvas",
     "Crane Architecture.canvas",
+    "Pasted image 20250920160703.png",
     "Untitled.md"
   ]
 }
