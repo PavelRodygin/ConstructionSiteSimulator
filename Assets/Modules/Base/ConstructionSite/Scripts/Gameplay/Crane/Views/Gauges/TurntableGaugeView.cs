@@ -8,6 +8,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views
 {
     public class TurntableGaugeView : MonoBehaviour
     {
+        [SerializeField] private TMP_Text angleValueText;
         [SerializeField] private TMP_Text speedValueText;
         [SerializeField] private Image rotationImage;
         [SerializeField] private Turntable turntable;
@@ -55,6 +56,7 @@ namespace Modules.Base.ConstructionSite.Scripts.Gameplay.Crane.Views
         
         private void OnAngleChanged(float currentAngle)
         {
+            angleValueText.text = currentAngle.ToString("F1", CultureInfo.InvariantCulture);
             rotationImage.rectTransform.localRotation = Quaternion.Euler(0f, 0f, -currentAngle);
         }
     }

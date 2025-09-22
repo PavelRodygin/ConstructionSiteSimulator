@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92b8baef-a0c4-443f-a706-4a1db3466d33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/HookHeightGaugeView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/HookHeightGaugeView.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scenes/ConstructionSite.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/CraneDashboardView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/CraneDashboardView.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/.obsidian/workspace.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/Crane Architecture.canvas" beforeDir="false" afterPath="$PROJECT_DIR$/ConstructionSiteSimulator_ObsidianVault/Crane Architecture.canvas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Hooks/Hook.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Hooks/Hook.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/TurntableGaugeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/TurntableGaugeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/TurntableGaugeView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/TurntableGaugeView.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +106,7 @@
       <workItem from="1758368938205" duration="15549000" />
       <workItem from="1758404550277" duration="1283000" />
       <workItem from="1758465636581" duration="5768000" />
-      <workItem from="1758482758916" duration="19640000" />
+      <workItem from="1758482758916" duration="21811000" />
     </task>
     <servers />
   </component>
