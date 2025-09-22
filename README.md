@@ -66,18 +66,12 @@ Ta izolacja czyni system wysoce rozszerzalnym:
 // Każdy komponent może łatwo eksponować dane reaktywne dla czujników i instrumentów
 public ReadOnlyReactiveProperty<float> CurrentRotationAngle =>
     _rotationAngle.ToReadOnlyReactiveProperty();
+
 public ReadOnlyReactiveProperty<float> CurrentLoad =>
     _currentLoad.ToReadOnlyReactiveProperty();
-public ReadOnlyReactiveProperty<float> HookHeight =>
-    _hookHeight.ToReadOnlyReactiveProperty();
+
 public ReadOnlyReactiveProperty<float> TrolleyDistance =>
     _trolleyDistance.ToReadOnlyReactiveProperty();
-// Reaktywne polecenia dla aktualizacji czujników
-private readonly ReactiveCommand<SensorData> _sensorUpdateCommand = new();
-// Czujniki mogą subskrybować reaktywne zdarzenia z filtrowaniem
-_rotationAngle
-    .Where(angle => Mathf.Abs(angle) > 0.1f)
-    .Subscribe(angle => UpdateRotationSensor(angle));
 ```
 #### Przesyłanie Danych Czujników w Czasie Rzeczywistym
 Architektura programowania reaktywnego (R3) ułatwia tworzenie różnych czujników i instrumentów dla panelu operatora:
@@ -107,32 +101,38 @@ Dzięki dekompozycji komponentów i R3, można łatwo stworzyć:
 - **⚖️ Czujnik Obciążenia**: Wyświetla bieżącą wagę ładunku i status obciążenia
 - **📏 Czujnik Wysokości**: Mierzy pionową pozycję haka i głębokość
 - **📐 Czujnik Odległości**: Pokazuje poziomą pozycję wózka od podstawy żurawia
--
+
 #### Reaktywne Zdarzenia i Polecenia
 - **ReactiveCommand**: Używane do aktualizacji danych czujników i interakcji UI
 - **ReactiveProperty**: Dane czujników w czasie rzeczywistym z automatycznymi powiadomieniami o zmianach
 - **Subject/Observable**: Wzorce publikowania i subskrypcji zdarzeń dla strumieni czujników
 - **CompositeDisposable**: Właściwe zarządzanie zasobami dla subskrypcji reaktywnych
-#### Przesyłanie Danych Czujników
-- **Aktualizacje w Czasie Rzeczywistym**: Czujniki automatycznie aktualizują się przy zmianie danych komponentów
-- **Filtrowanie Danych**: Używaj operatorów reaktywnych do filtrowania i przetwarzania danych czujników
-- **Ograniczanie**: Zapobiegaj nadmiernym aktualizacjom czujników dla wydajności
-- **Czyste Usuwanie**: Wszystkie subskrypcje czujników są właściwie zarządzane
--
+
 ### 🎮 System Sterowania
 Żuraw posiada zaawansowany system sterowania z:
 - **Płynną Obsługą Wejścia**: Wejście oparte na stanach z właściwym przyspieszeniem/hamowaniem
 - **Zachowanie Zależne od Obciążenia**: Cięższe ładunki redukują maksymalną prędkość
 - **Ograniczenia Bezpieczeństwa**: Limity ruchu i sprawdzenia pojemności obciążenia
 - **Natychmiastowa Informacja Zwrotna**: Natychmiastowa reakcja na wejście operatora
--
+
+## 🎮 Sterowanie
+Żuraw jest sterowany za pomocą następujących klawiszy klawiatury:
+
+- **Q**: Opuszczanie haka (Hook Down)
+- **E**: Podnoszenie haka (Hook Up)
+- **T**: Podłączanie lub odłączanie ładunku (Attach Cargo)
+- **A**: Obrót podstawy w lewo
+- **D**: Obrót podstawy w prawo
+- **W**: Przesuwanie wózka do przodu (zwiększanie odległości od podstawy)
+- **S**: Przesuwanie wózka do tyłu (zmniejszanie odległości od podstawy)
+
 ### 🔧 System Konfiguracji (nieukończony)
 Zachowanie żurawia jest kontrolowane przez ScriptableObjects `CraneSpecificationSO`:
 - **Ustawienia Obrotu**: Prędkość, przyspieszenie, krzywe hamowania
 - **Pojemność Obciążenia**: Nominalna i maksymalna waga ładunku
 - **Wydajność**: Redukcja prędkości na podstawie obciążenia
 - **Ruch**: Ustawienia prędkości wózka i haka
--
+
 ### 🎯 Przyszła Rozszerzalność
 Modułowy projekt ułatwia dodanie:
 1. **Systemy Czujników**: Różne instrumenty pomiarowe (czujniki obrotu, obciążenia, wysokości, odległości)
