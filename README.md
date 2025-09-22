@@ -180,4 +180,5 @@ Ten projekt został opracowany jako **24-godzinny szybki prototyp** w celu zadem
 Chociaż podstawowa funkcjonalność jest kompletna i działa, niektóre ulepszenia i optymalizacje są w toku. Nacisk położono na pokazanie pracy z fizyką, podejścia architektonicznego i potencjału rozszerzalności, a nie na gotowość produkcyjną.
 
 Tutaj również jest prosty FlowChart architektury dźwigu:
-<img width="1906" height="2229" alt="Crane Architecture" src="https://github.com/user-attachments/assets/13dfcf7e-5725-4172-bef3-aba4b1286fa2" />
+
+<img width="2082" height="2229" alt="Crane Architecture" src="https://github.com/user-attachments/assets/786bc4b0-c86f-4074-acfe-90f2d09a60d5" />
