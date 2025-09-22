@@ -2745,7 +2745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2757627298044949031, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
       propertyPath: m_YDrive.positionSpring
-      value: 10000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 5182553613729520227, guid: 6b9d24185568ef34f9e4e05c9be9f250, type: 3}
       propertyPath: m_Name
