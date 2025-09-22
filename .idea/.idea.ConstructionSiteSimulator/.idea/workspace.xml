@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92b8baef-a0c4-443f-a706-4a1db3466d33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConstructionSiteSimulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Crane.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Prefabs/Crane/Crane.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Hook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Turntable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Turntable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/CraneDashboardView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/CraneDashboardView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/HookLoadGaugeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/CargoMassGaugeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/HookLoadGaugeView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/CargoMassGaugeView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/TrolleyPositionGaugeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/TrolleyPositionGaugeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/TrolleyPositionGaugeView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/TrolleyPositionGaugeView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/TurntableGaugeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/TurntableGaugeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/TurntableGaugeView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/Gameplay/Crane/Views/Gauges/TurntableGaugeView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/CraneDashboardView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/CraneDashboardView.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/HookLoadGauge.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/HookLoadGauge.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/TrolleyPositionGauge.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Views/Crane/Gauges/TrolleyPositionGauge.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ThirdParty/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ThirdParty/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteModuleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Modules/Base/ConstructionSite/Scripts/ConstructionSiteModuleController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +104,7 @@
       <workItem from="1758368938205" duration="15549000" />
       <workItem from="1758404550277" duration="1283000" />
       <workItem from="1758465636581" duration="5768000" />
-      <workItem from="1758482758916" duration="15803000" />
+      <workItem from="1758482758916" duration="16160000" />
     </task>
     <servers />
   </component>

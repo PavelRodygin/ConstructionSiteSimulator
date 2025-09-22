@@ -3,6 +3,7 @@ using CodeBase.Core.Infrastructure;
 using CodeBase.Core.Infrastructure.Modules;
 using CodeBase.Services.Input;
 using Cysharp.Threading.Tasks;
+using Modules.Base.ConstructionSite.Scripts.Gameplay.Crane;
 using R3;
 
 namespace Modules.Base.ConstructionSite.Scripts
@@ -17,17 +18,19 @@ namespace Modules.Base.ConstructionSite.Scripts
         private readonly InputSystemService _inputSystemService;
         private readonly ConstructionSiteModuleModel _constructionSiteModuleModel;
         private readonly ConstructionSitePresenter _constructionSitePresenter;
+        private readonly Crane _crane;
         private readonly ReactiveCommand<ModulesMap> _openNewModuleCommand = new();
         private readonly UniTaskCompletionSource _moduleCompletionSource;
 
         private readonly CompositeDisposable _disposables = new();
         
         public ConstructionSiteModuleController(IScreenStateMachine screenStateMachine, ConstructionSiteModuleModel constructionSiteModuleModel, 
-            ConstructionSitePresenter constructionSitePresenter, InputSystemService inputSystemService)
+            ConstructionSitePresenter constructionSitePresenter, InputSystemService inputSystemService, Crane crane)
         {
             _constructionSiteModuleModel = constructionSiteModuleModel ?? throw new ArgumentNullException(nameof(constructionSiteModuleModel));
             _constructionSitePresenter = constructionSitePresenter ?? throw new ArgumentNullException(nameof(constructionSitePresenter));
             _inputSystemService = inputSystemService;
+            _crane = crane ?? throw new ArgumentNullException(nameof(crane));
             _screenStateMachine = screenStateMachine ?? throw new ArgumentNullException(nameof(screenStateMachine));
             
             _moduleCompletionSource = new UniTaskCompletionSource();
@@ -40,6 +43,8 @@ namespace Modules.Base.ConstructionSite.Scripts
             _constructionSitePresenter.HideInstantly();
             
             _inputSystemService.SwitchToCrane();
+            _crane.EnableCraneControls();
+            
             await _constructionSitePresenter.Enter(_openNewModuleCommand);
         }
 
