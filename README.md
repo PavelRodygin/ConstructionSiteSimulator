@@ -1,7 +1,3 @@
-# Zadanie testowe dla FlintSystems
-## Witajcie, szanowni specjaliści FlintSystems!
-Przedstawiam wam: Projekt Unity poświęcony realistycznemu symulatorowi żurawia. Projekt z modułową, skalowalną architekturą (choć główny nacisk nie na niej). Projekt demonstruje moje umiejętności w pracy z fizyką i tworzeniu projektów symulacyjnych, doświadczenie w tworzeniu i dekompozycji encji, wykorzystanie DI, programowania reaktywnego i asynchronicznego.
-> **Uwaga**: Podstawową wersję projektu ukończyłem i oddałem po jednym dniu pracy, następnie spędziłem kolejne dwa dni na skalowaniu architektury i dodawaniu nowych funkcji. W sumie na rozwój projektu poświęcono trzy dni. Niektóre systemy projektu (z wyjątkiem podstawowych, wskazanych w zadaniu technicznym) wciąż są w trakcie dopracowywania; pewne aspekty nie zdążyłem w pełni zrealizować i zoptymalizować. Z przyjemnością podzielę się moimi pomysłami na dalsze ulepszenie projektu podczas rozmowy technicznej!
 
 ## 🏗️ Architektura Projektu
 Projekt posiada modułową architekturę, gdzie każdy moduł jest niezależny i izolowany. Szczegółowo z tym rozwiązaniem można zapoznać się w moim repozytorium TechnicalSample, więc nie będę na tym akcentować uwagi. Ważne jest zrozumienie, że dla wygody testowania projekt można uruchomić i przetestować ze sceny dowolnego modułu (Bootstrap, MainMenu lub ConstructionSite).
